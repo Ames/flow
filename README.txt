@@ -38,18 +38,3 @@ MACRO PATCHES :G waat?!
 play/pause, framerate, etc controls?
 
 data import/export
-
-
-http://closure-compiler.appspot.com/
-
-// ==ClosureCompiler==
-// @compilation_level SIMPLE_OPTIMIZATIONS
-// @output_file_name flow-min.js
-// @code_url http://130.58.223.114/~ames/flow/flow-main.js
-// @code_url http://130.58.223.114/~ames/flow/flow-node.js
-// @code_url http://130.58.223.114/~ames/flow/flow-ui.js
-// @code_url http://130.58.223.114/~ames/flow/flow-widget.js
-// @code_url http://130.58.223.114/~ames/flow/flow-types.js
-// @code_url http://130.58.223.114/~ames/flow/flow-wire.js
-// ==/ClosureCompiler==
-
