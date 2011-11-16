@@ -1,18 +1,12 @@
 
- a few things:
+a few things:
 
-drawing the boxes too much: text should be html (?)
  plotting is inefficient, also really bad
-  renamable boxes
+  re-namable boxes
 
-math should happen more than drawing
  error catching custom box
 
-Everything should be abstracted, modularized...
-  so we can add, remove, duplicate, etc.
-math could probably more efficient
-
- figure out a good way to serialise the sketch, for load/save/persistence
+math could probably more efficient ??
 
 hover ports for value?
  color things semantically
@@ -31,10 +25,11 @@ ARDUINO?!
 
 data types: beat? color? image? audio?
  
- rendering screes, for graphics, who knows; webGL?
+ rendering context, for graphics, who knows; webGL?
 
 MACRO PATCHES :G waat?!
+  --this might be one of the next steps
 
-play/pause, framerate, etc controls?
+framerate, etc controls?
 
 data import/export
