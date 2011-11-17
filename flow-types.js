@@ -68,6 +68,15 @@ var types=[
 		
 		box.style.minWidth=20+'px';
 		
+		/*
+		_.wField=document.createElement('div');
+		box.appendChild(_.wField);
+		
+		_.wField.innerHTML='2';
+		_.wField.style.top='-10px';
+		_.wField.style.position='absolute';
+		*/
+		
 		_.canv=document.createElement('canvas');
 		_.ctx = _.canv.getContext('2d'); 
 		box.appendChild(_.canv);
@@ -77,7 +86,7 @@ var types=[
 		_.canv.style['pointer-events']='none';
 		
 		_.newDat=false;
-		
+				
 		var pw=0,ph=0;
 		box.onmousemove=function(){
 			if(box.clientWidth!=pw || box.clientHeight!=ph){
@@ -245,6 +254,7 @@ var types=[
 			o.y=or[1];
 		}
 		
+		// http://stackoverflow.com/questions/4378435/how-to-access-accelerometer-gyroscope-data-from-javascript
 		if (window.DeviceOrientationEvent) {
 		    window.addEventListener("deviceorientation", function () {
 		        that.tilt([event.beta, event.gamma]);

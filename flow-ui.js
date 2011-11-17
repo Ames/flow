@@ -8,7 +8,7 @@ function makeLibrary(){
 	var newTxt='Add:<ul>';
 	
 	for(var ii in nodeTypes){
-		newTxt+='<li><a href="javascript:new nodeTypes.'+ii+'({})">'+ii+'</a></li>'
+		newTxt+='<li><a href="#" onclick="javascript:new nodeTypes.'+ii+'({});return false;">'+ii+'</a></li>'
 	}
 	newTxt+='</ul>'
 	
@@ -45,6 +45,7 @@ document.onkeydown=function keyDown(e){
 		
 	switch(e.which){
 		case 8: //backspace
+		case 46: //delete
 			e.preventDefault();
 			deleteNodes(selected);
 			break;
