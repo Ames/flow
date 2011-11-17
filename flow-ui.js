@@ -4,11 +4,21 @@ var selectBox;
 var selected=[];
 
 function makeLibrary(){
-		
-	var newTxt='Add:<ul>';
+	
+	var newTxt='Examples:<ul>';
+	
+		''
+
+	for(var ii in examples){
+		newTxt+='<li><a href="#" onclick="loadScene(examples['+ii+'].scn);return false;">'+examples[ii].name+'</a></li>'
+	}
+	newTxt+='</ul>'
+	
+	
+	newTxt+='Add:<ul>';
 	
 	for(var ii in nodeTypes){
-		newTxt+='<li><a href="#" onclick="javascript:new nodeTypes.'+ii+'({});return false;">'+ii+'</a></li>'
+		newTxt+='<li><a href="#" onmousedown="dragging=[makeNode({type:\''+ii+'\',x:event.clientX,y:event.clientY})];return false;">'+ii+'</a></li>'
 	}
 	newTxt+='</ul>'
 	
@@ -26,12 +36,15 @@ function saveLocal(){
 }
 
 function openLocal(){
-	deleteNodes(nodes);
-
-	importNodes(JSON.parse(localStorage.getItem('scene')));
-	curTime=0;
+	loadScene(JSON.parse(localStorage.getItem('scene')));
 }
 
+function loadScene(scn){
+	deleteNodes(nodes);
+
+	importNodes(scn);
+	curTime=0;
+}
 
 //function plotWidget
 document.onkeydown=function keyDown(e){

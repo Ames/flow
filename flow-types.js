@@ -18,7 +18,7 @@ var types=[
 	i:{a:1,b:2},
 	o:{c:3},
 	f:function(i,o){
-		o.c=parseFloat(i.a)+parseFloat(i.b);
+		o.c=1*i.a+1*i.b;
 	}
 },{type:'Sine',
 	title:'Sine',
@@ -270,8 +270,83 @@ var types=[
 		}
 
 	}
+},{type:'check',
+	title:'',
+	o:{o:false},
+	init:function(i,o,that){
+		var inp=document.createElement('input');
+		inp.type='checkbox';
+		that.widget.box.appendChild(inp);
+		//that.widget.box.style.top='5px';
+		that.widget.resize();
+		inp.onchange=function(e){
+			o.o=(inp.checked);
+			that.widget.upLabels();
+		}
+	}
+},{type:'button',
+	title:'',
+	o:{o:false},
+	init:function(i,o,that){
+		var inp=document.createElement('input');
+		inp.type='button';
+		inp.value='press';
+		that.widget.box.appendChild(inp);
+		//that.widget.box.style.top='5px';
+		that.widget.resize();
+		inp.onmousedown=function(e){
+			o.o=true;
+			that.widget.upLabels();
+		}
+		inp.onmouseup=function(e){
+			o.o=false;
+			that.widget.upLabels();
+		}
+	}
+},{type:'AND',
+	title:'AND',
+	i:{a:0,b:0},
+	o:{y:0},
+	f:function(i,o,that){
+		o.y=i.a && i.b;
+	}
+},{type:'OR',
+	title:'OR',
+	i:{a:0,b:0},
+	o:{y:0},
+	f:function(i,o,that){
+		o.y=i.a||i.b;
+	}
+},{type:'NAND',
+	title:'NAND',
+	i:{a:0,b:0},
+	o:{y:0},
+	f:function(i,o,that){
+		o.y=!(i.a && i.b);
+	}
+},{type:'NOR',
+	title:'NOR',
+	i:{a:0,b:0},
+	o:{y:0},
+	f:function(i,o,that){
+		o.y=!(i.a||i.b);
+	}
+},{type:'NOT',
+	title:'NOT',
+	i:{a:0},
+	o:{y:0},
+	f:function(i,o,that){
+		o.y=!i.a;
+	}
+},{type:'XOR',
+	title:'XOR',
+	i:{a:0,b:0},
+	o:{y:0},
+	f:function(i,o,that){
+		o.y=(i.a!=i.b);
+		//o.y=i.a ^ i.b;
+	}
 }];
-
 
 var nodeTypes={};
 

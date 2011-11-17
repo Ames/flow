@@ -18,24 +18,9 @@ var wiring; // wire under consruction: [srcNode,srcPort,wire,pt]
 var play=true;
 
 
-function init(){
-	canvDiv=document.getElementById('container');
-	
-	makeTypes();
-	
-	//window.setInterval(step,1000/sps);
-	//t0=Date.now()/1000;
-	step();
-	
-	//window.setInterval(draw,1000/fps);
-	
-	//this is supposed to be better.
-	(function animloop(){
-      requestAnimFrame(animloop);
-      draw();
-    })();
-	
-	var defaultScn={
+var examples=[
+{name:'plot sines',
+ scn:{
 		nodes:[
 			{type:'Logger',x:500,y:200}, //0
 			{type:'Summer',x:200,y:100}, //1
@@ -59,9 +44,40 @@ function init(){
 			{n1:7,p1:'x',n2:6,p2:'y2' ,color:0},
 			{n1:7,p1:'y',n2:6,p2:'y3' ,color:100}
 		]
-	};
-			
-	importNodes(defaultScn);
+	}
+},{
+name:'SR latch',
+scn:{"nodes":[
+		{"type":"button","title":"","x":218,"y":178,"i":{}},
+		{"type":"button","title":"","x":216,"y":260,"i":{}},
+		{"type":"NOR","title":"NOR","x":384,"y":179,"i":{"a":false,"b":false}},
+		{"type":"NOR","title":"NOR","x":384,"y":259,"i":{"a":true,"b":false}}
+	],"wires":[
+		{"n1":"0","p1":"o","n2":"2","p2":"a","color":"hsl(200, 50%, 55%)"},
+		{"n1":"3","p1":"y","n2":"2","p2":"b","color":"hsl(200, 50%, 55%)"},
+		{"n1":"1","p1":"o","n2":"3","p2":"b","color":"hsl(200, 50%, 55%)"},
+		{"n1":"2","p1":"y","n2":"3","p2":"a","color":"hsl(200, 50%, 55%)"}
+	]}
+}];
+
+function init(){
+	canvDiv=document.getElementById('container');
+	
+	makeTypes();
+	
+	//window.setInterval(step,1000/sps);
+	//t0=Date.now()/1000;
+	step();
+	
+	//window.setInterval(draw,1000/fps);
+	
+	//this is supposed to be better.
+	(function animloop(){
+      requestAnimFrame(animloop);
+      draw();
+    })();
+	
+	//loadScene(examples[1].scn);
 	
 	/*
 	logger=new nodeTypes.Logger({x:500,y:200});
@@ -103,6 +119,8 @@ function init(){
 
 var draw=function draw(){
 	if(play){
+		//step();
+		
 		for(var ii in nodes){
 			nodes[ii].draw();
 		}

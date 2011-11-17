@@ -159,5 +159,6 @@ var Node=function Node(dArg,iArg){
 	
 	
 	this.widget.upLoc();
+	this.widget.redraw();
 	nodes.push(this);
 }

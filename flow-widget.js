@@ -169,7 +169,6 @@ var Widget=function Widget(node){
 		handleDown(e.targetTouches[0]);
 	}
 	
-	
 	div.onmouseup=function(e){
 		if(wiring){
 			var pt=getMouse(e);
