@@ -235,6 +235,31 @@ var types=[
 			that.widget.upLabels();
 		}
 	}
+},{type:'Accel',
+	title:'Accelerometer',
+	o:{x:0,y:0},
+	init:function(i,o,that){
+		
+		that.tilt=function tilt(or){
+			o.x=or[0];
+			o.y=or[1];
+		}
+		
+		if (window.DeviceOrientationEvent) {
+		    window.addEventListener("deviceorientation", function () {
+		        that.tilt([event.beta, event.gamma]);
+		    }, true);
+		} else if (window.DeviceMotionEvent) {
+		    window.addEventListener('devicemotion', function () {
+		        that.tilt([event.acceleration.x * 2, event.acceleration.y * 2]);
+		    }, true);
+		} else {
+		    window.addEventListener("MozOrientation", function () {
+		        that.tilt([orientation.x * 50, orientation.y * 50]);
+		    }, true);
+		}
+
+	}
 }];
 
 
