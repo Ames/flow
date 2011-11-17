@@ -8,7 +8,7 @@ var nodes=[];
 var curTime=0;
 var fps=60;
 var sps=120;
-var t0=0;
+//var t0=0;
 
 var dragging=null;
 var mouse=[0,0];
@@ -24,9 +24,16 @@ function init(){
 	makeTypes();
 	
 	//window.setInterval(step,1000/sps);
-	t0=Date.now()/1000;
+	//t0=Date.now()/1000;
 	step();
-	window.setInterval(draw,1000/fps);
+	
+	//window.setInterval(draw,1000/fps);
+	
+	//this is supposed to be better.
+	(function animloop(){
+      requestAnimFrame(animloop);
+      draw();
+    })();
 	
 	var defaultScn={
 		nodes:[
@@ -91,6 +98,9 @@ function init(){
 
 }
 
+
+    
+
 var draw=function draw(){
 	if(play){
 		for(var ii in nodes){
@@ -131,4 +141,17 @@ objectSize = function(obj) {
 	return size;
 };
 
+
+// http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+// shim layer with setTimeout fallback
+window.requestAnimFrame = (function(){
+  return  window.requestAnimationFrame || 
+    window.webkitRequestAnimationFrame || 
+    window.mozRequestAnimationFrame    || 
+    window.oRequestAnimationFrame      || 
+    window.msRequestAnimationFrame     || 
+    function(/* function */ callback, /* DOMElement */ element){
+      window.setTimeout(callback, 1000 / 60);
+    };
+})();
 

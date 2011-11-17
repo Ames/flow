@@ -119,7 +119,10 @@ var Widget=function Widget(node){
 	
 	var ths=this;
 	
-	div.onmousedown=function(e){
+	
+	var handleDown=function(e){
+		
+
 		var pt=getMouse(e);
 		
 		if(e.target.type=="textarea")
@@ -129,6 +132,7 @@ var Widget=function Widget(node){
 			return;
 		//console.log(e);
 		
+		//if hovering an input port
 		var prtn;
 		if(prtn=hoverPorts(node.inputs,pt)){
 			var prt=node.inputs[prtn];
@@ -137,6 +141,8 @@ var Widget=function Widget(node){
 				rmWire(node,prtn);
 				return;
 			}
+			
+			//if hovering an output port
 		}else if(prtn=hoverPorts(node.outputs,pt)){
 			var prt=node.outputs[prtn];
 			var tmpWire=new Wire(pt,prt.pt,'#555');
@@ -155,6 +161,14 @@ var Widget=function Widget(node){
 		}
 		dragging=selected;
 	}
+	
+	
+	//idk if this works at all.
+	div.onmousedown=handleDown;
+	div.ontouchmove=function(e){
+		handleDown(e.targetTouches[0]);
+	}
+	
 	
 	div.onmouseup=function(e){
 		if(wiring){
