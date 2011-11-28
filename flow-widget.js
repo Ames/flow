@@ -145,7 +145,9 @@ var Widget=function Widget(node){
 		if(prtn=hoverPorts(node.inputs,pt)){
 			var prt=node.inputs[prtn];
 			if(prt.src.node){
-				wiring=[prt.src.node,prt.srcPort,new Wire(pt,prt.src.pt),pt];
+				var tmpWire=new Wire(pt,prt.src.pt);
+				tmpWire.redraw();
+				wiring=[prt.src.node,prt.srcPort,tmpWire,pt];
 				rmWire(node,prtn);
 				return;
 			}

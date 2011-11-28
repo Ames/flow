@@ -7,18 +7,15 @@ function makeLibrary(){
 	
 	var newTxt='Examples:<ul>';
 	
-		''
-
 	for(var ii in examples){
 		newTxt+='<li><a href="#" onclick="loadScene(examples['+ii+'].scn);return false;">'+examples[ii].name+'</a></li>'
 	}
 	newTxt+='</ul>'
 	
-	
 	newTxt+='Add:<ul>';
 	
 	for(var ii in nodeTypes){
-		newTxt+='<li><a href="#" onmousedown="dragging=[makeNode({type:\''+ii+'\',x:event.clientX-30,y:event.clientY-10})];return false;">'+ii+'</a></li>'
+		newTxt+='<li><a href="#" onmousedown="dragging=[makeNode({type:\''+ii+'\',x:event.clientX-30,y:event.clientY-10})];return false;" onclick="return false;">'+ii+'</a></li>'
 	}
 	newTxt+='</ul>'
 	
