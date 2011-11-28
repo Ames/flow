@@ -14,6 +14,8 @@ var Node=function Node(dArg,iArg){
 	
 	this.type=dArg.type;
 	
+	this.vars={}; // for type-specific variables
+	
 	for(var ii in dArg.i) i[ii]=dArg.i[ii];
 	for(var ii in dArg.o) o[ii]=dArg.o[ii];
 
@@ -23,11 +25,22 @@ var Node=function Node(dArg,iArg){
 //	var i=arg.i||{}; //inputs
 //	var o=arg.o||{}; //outputs
 
-	var initF=dArg.init||null;  // called onece on init
+	var initF=dArg.init||null;  // called once on init
 	var stepF=dArg.step||null;  // called every step, regardless of inputs
 	var f=dArg.f||function(){}; // called on step when new data
 	
-		
+	
+	if(dArg.vars){
+		for(var ii in dArg.vars){
+			this.vars[ii]=dArg.vars[ii];
+		}
+	}
+	if(iArg.vars){
+		for(var ii in iArg.vars){
+			this.vars[ii]=iArg.vars[ii];
+		}
+	}
+	
 	for(var ii in i)
 		this.inputs[ii]={src:{val:i[ii],flag:-1}}; // -1 used for one-off updates
 	
@@ -73,6 +86,13 @@ var Node=function Node(dArg,iArg){
 			//if(!this.inputs[ii].src.node)
 			obj.i[ii]=this.inputs[ii].src.val;
 		}
+		for(var ii in this.vars){
+			if(!obj.vars)
+				obj.vars={};
+				
+			obj.vars[ii]=this.vars[ii];
+		}
+		
 		return obj;
 	}
 

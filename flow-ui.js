@@ -18,7 +18,7 @@ function makeLibrary(){
 	newTxt+='Add:<ul>';
 	
 	for(var ii in nodeTypes){
-		newTxt+='<li><a href="#" onmousedown="dragging=[makeNode({type:\''+ii+'\',x:event.clientX,y:event.clientY})];return false;">'+ii+'</a></li>'
+		newTxt+='<li><a href="#" onmousedown="dragging=[makeNode({type:\''+ii+'\',x:event.clientX-30,y:event.clientY-10})];return false;">'+ii+'</a></li>'
 	}
 	newTxt+='</ul>'
 	
@@ -242,19 +242,27 @@ function exportNodes(theNodes){
 	var nBuf=[]; //node buffer
 	var wBuf=[]; //wire buffer
 	
+	// for each node
 	for(var ii in theNodes){
 		var n=theNodes[ii];
 		nBuf.push(n.doExport());
 		
 		//sin1.widget.outWires.y[0]==sin2.widget.inWires.amp
-				
+		
+		// we need to check for duplicates!!!
+		
+		// for each inWire
 		for(var n1 in n.widget.inWires){
 			var w=n.widget.inWires[n1];
 			
+			//for each other node n2
 			for(var jj in theNodes){
 				var n2=theNodes[jj];
+				// for each outWire port in n2
 				for(var n2o in n2.widget.outWires){
+					// for each outWire in that port
 					for(var n2oi in n2.widget.outWires[n2o]){
+						// if the wires match...
 						if(w==n2.widget.outWires[n2o][n2oi]){
 							// found it!
 							wBuf.push({n1:jj,p1:n2o,n2:ii,p2:n1,color:w.color});
@@ -289,14 +297,15 @@ function duplicate(){
 
 	var buf=exportNodes(selected);
 
+//	deselect();
+	
+//	for(var ii in buf.nodes){
+//		buf.nodes[ii].x+=10;	
+//		buf.nodes[ii].y+=10;	
+//	}
+	
 	deselect();
 	
-	for(var ii in buf.nodes){
-		buf.nodes[ii].x+=10;	
-		buf.nodes[ii].y+=10;	
-	}
-	
-	deselect();
 	var newNodes=importNodes(buf);
 
 	for(var ii in newNodes){

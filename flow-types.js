@@ -68,6 +68,10 @@ var types=[
 		
 		box.style.minWidth=20+'px';
 		
+		//we would store w and h in that.vars,
+		// but there's this issue with webkit where user can't make it smaller.
+		//  we might have to make our own resizable boxes :(
+		
 		/*
 		_.wField=document.createElement('div');
 		box.appendChild(_.wField);
@@ -180,6 +184,7 @@ var types=[
 	title:'custom',
 	i:{a:1},
 	o:{x:0,y:0,z:0},
+	vars:{txt:"o.x=Math.sin(3.1*Math.PI*i.a)\n	+Math.sin(7*Math.PI*i.a)/2-3;\n\no.y=Math.random()-6;\no.z=i.a % 1;"},
 	init:function(i,o,that){
 		var box=that.widget.box;
 		that._={};
@@ -207,10 +212,11 @@ var types=[
 //			}
 		
 		inp.onchange=function(){
-			that.newCode(inp.value);
+			that.vars.txt=inp.value;
+			that.newCode(that.vars.txt);
 		}
 		
-		inp.value="o.x=Math.sin(3.1*Math.PI*i.a)\n	+Math.sin(7*Math.PI*i.a)/2-3;\n\no.y=Math.random()-6;\no.z=i.a % 1;";
+		inp.value=that.vars.txt;
 		inp.onchange();
 		
 		var pw=0,ph=0;
@@ -230,6 +236,7 @@ var types=[
 	}
 },{type:'hSlider',
 	o:{o:0},
+	vars:{value:0},
 	init:function(i,o,that){
 		var inp=document.createElement('input');
 		inp.type='range';
@@ -239,7 +246,9 @@ var types=[
 		that.widget.box.appendChild(inp);
 		//that.widget.box.style.top='5px';
 		that.widget.resize();
+		inp.value=that.vars.value;
 		inp.onchange=function(e){
+			that.vars.value=inp.value;
 			o.o=inp.value;
 			that.widget.upLabels();
 		}
@@ -273,13 +282,16 @@ var types=[
 },{type:'check',
 	title:'',
 	o:{o:false},
+	vars:{checked:false},
 	init:function(i,o,that){
 		var inp=document.createElement('input');
 		inp.type='checkbox';
 		that.widget.box.appendChild(inp);
 		//that.widget.box.style.top='5px';
 		that.widget.resize();
+		inp.checked=that.vars.checked;
 		inp.onchange=function(e){
+			that.vars.checked=inp.checked;
 			o.o=(inp.checked);
 			that.widget.upLabels();
 		}
@@ -343,7 +355,8 @@ var types=[
 	i:{a:0,b:0},
 	o:{y:0},
 	f:function(i,o,that){
-		o.y=(i.a!=i.b);
+		//o.y=(i.a!=i.b);
+		o.y=(i.a<=0) != (i.b<=0);
 		//o.y=i.a ^ i.b;
 	}
 }];

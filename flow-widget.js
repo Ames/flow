@@ -130,7 +130,14 @@ var Widget=function Widget(node){
 			
 		if(e.target.type=="range")
 			return;
+		
 		//console.log(e);
+		
+		if(e.altKey){
+			select(node);
+			duplicate();
+			return;
+		}
 		
 		//if hovering an input port
 		var prtn;
