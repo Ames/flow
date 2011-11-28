@@ -134,7 +134,8 @@ var Widget=function Widget(node){
 		//console.log(e);
 		
 		if(e.altKey){
-			select(node);
+			if(selected.indexOf(node)==-1) //perhaps select() should do this...
+				select(node);
 			duplicate();
 			return;
 		}
