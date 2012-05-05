@@ -300,6 +300,7 @@ var types=[
 	}
 },{type:'check',
 	title:'',
+	i:{i:false},
 	o:{o:false},
 	vars:{checked:false},
 	init:function(i,o,that){
@@ -314,6 +315,12 @@ var types=[
 			o.o=(inp.checked);
 			that.widget.upLabels();
 		}
+		that.inp=inp;
+	},
+	f:function(i,o,that){
+		that.inp.checked=i.i;
+		that.inp.onchange();
+		o.o=i.i;
 	}
 },{type:'button',
 	title:'',
@@ -378,7 +385,7 @@ var types=[
 		o.y=(i.a<=0) != (i.b<=0);
 		//o.y=i.a ^ i.b;
 	}
-},{ type:'topic',
+},{type:'Topic',
 	title:'Topic',
 	i:{val:0},
 	o:{val:0},
@@ -398,6 +405,14 @@ var types=[
 				var topic=that.vars.topic;
 				
 				socket.emit('joinTopic',topic);
+				
+				socket.on('connect',function(){
+					socket.emit('joinTopic',topic); // re-join the topic.
+				});	
+				
+				socket.on('disconnect',function(){
+					inp.style.backgroundColor='#FED';
+				});
 				
 				socket.on('joined',function(topic_){
 					if(topic==topic_){
@@ -419,23 +434,23 @@ var types=[
 				});
 			}
 			
-			}
-			
-			that.joinTopic();
-			
-			that.leaveTopic=function(){
+		}
+		
+		that.joinTopic();
+		
+		that.leaveTopic=function(){
 			if(that.vars.topic){
-			socket.emit('leaveTopic',that.vars.topic);
+				socket.emit('leaveTopic',that.vars.topic);
 			}
-			}
-			
-			inp.onchange=function(){
+		}
+		
+		inp.onchange=function(){
 			inp.style.backgroundColor='#FFF';
 			that.leaveTopic();
 			
 			if(inp.value){
-			that.vars.topic=inp.value;
-			that.joinTopic();
+				that.vars.topic=inp.value;
+				that.joinTopic();
 			}
 		}
 	},

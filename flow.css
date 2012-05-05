@@ -75,3 +75,10 @@ a:hover{
 	z-index:2;
 	border:1px solid rgba(200,200,200,.5)
 }
+
+input[type="input"]{
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border:1px solid #BBB;
+	text-align:center;
+}
