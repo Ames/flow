@@ -48,7 +48,9 @@ var Node=function Node(dArg,iArg){
 		this.outputs[ii]={node:this,val:o[ii],flag:false};
 
 	this.newCode=function(str){
-		f=new Function('i','o','that',str);
+		var newF=new Function('i','o','that',str);
+		newF(i,o,this);
+		f=newF;
 	}
 
 	var widget=new Widget(this);
@@ -134,7 +136,7 @@ var Node=function Node(dArg,iArg){
 			//this.widget.upLabels();
 		}
 	}
-	
+
 	this.progress=function progress(){
 		for(var ii in o){
 			this.outputs[ii].flag=false;

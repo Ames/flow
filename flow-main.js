@@ -10,13 +10,15 @@ var fps=60;
 var sps=120;
 //var t0=0;
 
-var dragging=null;
+var dragging=false;
 var mouse=[0,0];
 
 var wiring; // wire under consruction: [srcNode,srcPort,wire,pt]
 
 var play=true;
 
+var socket;
+var localSocket={};
 
 var examples=[
 {name:'plot sines',
@@ -63,6 +65,10 @@ scn:{"nodes":[
 function init(){
 	canvDiv=document.getElementById('container');
 	
+	
+    socket=io.connect('http://login.sccs.swarthmore.edu:8201');
+
+
 	makeTypes();
 	
 	//window.setInterval(step,1000/sps);
@@ -76,8 +82,12 @@ function init(){
       requestAnimFrame(animloop);
       draw();
     })();
-	
-	//loadScene(examples[1].scn);
+
+    
+	var tmpScene=localStorage.getItem('tmpScene');
+	if(tmpScene){
+	   loadScene(JSON.parse(tmpScene));
+	}
 	
 	/*
 	logger=new nodeTypes.Logger({x:500,y:200});
@@ -113,9 +123,7 @@ function init(){
 //	}
 
 }
-
-
-    
+  
 
 var draw=function draw(){
 	if(play){
@@ -145,6 +153,10 @@ var step=function step(){
 	window.setTimeout(step,1000/sps);
 }
 
+function unloading(){
+	localStorage.setItem('tmpScene',JSON.stringify(exportNodes(nodes)));	
+}
+
 //misc utility funcs
 
 Math.dist=function(x1,y1,x2,y2){
@@ -172,4 +184,3 @@ window.requestAnimFrame = (function(){
       window.setTimeout(callback, 1000 / 60);
     };
 })();
-

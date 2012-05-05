@@ -146,13 +146,13 @@ document.onmousemove=function mouseMove(e){
 		for(var ii in dragging){
 			dragging[ii].widget.x+=dx;
 			dragging[ii].widget.y+=dy;
-	   		dragging[ii].widget.upLoc();
+			dragging[ii].widget.upLoc();
 		}
 	}
 	if(wiring){
-	   wiring[3][0]=newMouse[0];   
-	   wiring[3][1]=newMouse[1];  
-	   wiring[2].redraw(); 
+		wiring[3][0]=newMouse[0];
+		wiring[3][1]=newMouse[1];
+		wiring[2].redraw();
 	}
 	if(selectStart){
 		selectBox.style.width=Math.abs(newMouse[0]-selectStart[0])+'px';

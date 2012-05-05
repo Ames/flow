@@ -20,6 +20,13 @@ var types=[
 	f:function(i,o){
 		o.c=1*i.a+1*i.b;
 	}
+},{type:'Multiply',
+	title:'Multiply',
+	i:{a:1,b:2},
+	o:{c:3},
+	f:function(i,o){
+		o.c=i.a*i.b;
+	}
 },{type:'Sine',
 	title:'Sine',
 	i:{freq:2,amp:1,phase:0},
@@ -211,13 +218,19 @@ var types=[
 //				that.widget.redraw();
 //			}
 		
-		inp.onchange=function(){
+		inp.onkeyup=function(){
 			that.vars.txt=inp.value;
-			that.newCode(that.vars.txt);
+			try{
+				that.newCode(that.vars.txt);
+				inp.style.backgroundColor='';
+			}catch(err){
+				ERR=err;
+				inp.style.backgroundColor='#FDD';
+			}
 		}
 		
 		inp.value=that.vars.txt;
-		inp.onchange();
+		inp.onkeyup();
 		
 		var pw=0,ph=0;
 		inp.onmousemove=function(){
@@ -235,6 +248,7 @@ var types=[
 		}
 	}
 },{type:'hSlider',
+	i:{i:0},
 	o:{o:0},
 	vars:{value:0},
 	init:function(i,o,that){
@@ -252,6 +266,11 @@ var types=[
 			o.o=inp.value;
 			that.widget.upLabels();
 		}
+		that.inp=inp;
+	},
+	f:function(i,o,that){
+	   that.inp.value=i.i;
+	   that.inp.onchange();
 	}
 },{type:'Accel',
 	title:'Accelerometer',
@@ -359,7 +378,84 @@ var types=[
 		o.y=(i.a<=0) != (i.b<=0);
 		//o.y=i.a ^ i.b;
 	}
+},{ type:'topic',
+	title:'Topic',
+	i:{val:0},
+	o:{val:0},
+	vars:{topic:""},
+	init:function(i,o,that){
+		var inp=document.createElement('input');
+		inp.type='input';
+		inp.value=that.vars.topic;
+		inp.placeholder='Topic Name';
+		that.widget.box.appendChild(inp);
+		that.widget.resize();
+		
+		that.joinTopic=function(){
+			
+			if(that.vars.topic){
+				
+				var topic=that.vars.topic;
+				
+				socket.emit('joinTopic',topic);
+				
+				socket.on('joined',function(topic_){
+					if(topic==topic_){
+						inp.style.backgroundColor='#DFD';
+						inp.blur();
+					}
+				});
+				
+				
+				socket.on(topic,function(dat){
+					o.val=dat;
+				});
+				
+				if(!localSocket[topic]){
+					localSocket[topic]=[];
+				}
+				localSocket[topic].push(function(dat){
+					o.val=dat;
+				});
+			}
+			
+			}
+			
+			that.joinTopic();
+			
+			that.leaveTopic=function(){
+			if(that.vars.topic){
+			socket.emit('leaveTopic',that.vars.topic);
+			}
+			}
+			
+			inp.onchange=function(){
+			inp.style.backgroundColor='#FFF';
+			that.leaveTopic();
+			
+			if(inp.value){
+			that.vars.topic=inp.value;
+			that.joinTopic();
+			}
+		}
+	},
+	remove:function(i,o,that){
+		that.leaveTopic();
+		// we should fix localTopic too…
+	},
+	f:function(i,o,that){
+		if(that.vars.topic){
+			socket.emit(that.vars.topic,i.val);
+			var funcs=localSocket[that.vars.topic];
+			if(funcs){
+				for(f in funcs){
+					funcs[f](i.val); 
+				}
+			}
+		}
+	}
 }];
+
 
 var nodeTypes={};
 
