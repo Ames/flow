@@ -205,8 +205,18 @@ var Widget=function Widget(node){
 			var prt=node.inputs[prtn];
 			if(!prt.src.node){
 				var eBox=new EditBox(prt.pt,node.inputs[prtn].src.val,function(v){
-					node.inputs[prtn].src.val=v;
-					node.inputs[prtn].src.flag=-1;
+				    
+				    try{
+				        var newVal=eval(v); // yeah I know.
+				        //if(!isNaN(newVal)){
+    					node.inputs[prtn].src.val=newVal;
+    					node.inputs[prtn].src.flag=-1;
+				        //}
+				    }catch(err){
+				        
+				    }
+				    
+
 				});
 			}
 		}
@@ -370,12 +380,30 @@ function EditBox(pt,cur,callback){
 	input.select();
 	input.focus();
 	
+	this.removed=false;
+	
 	input.onchange=function(){
+	    if(this.removed)
+	       return;
+	       
 		ths.remove();
 		callback(input.value);
 	}
 	
+	input.onkeydown=function(e){
+	   switch(e.which){
+	       case 27: // ESC
+		       ths.remove();
+	           break;
+	       case 13: // Enter
+	           input.onchange();
+	           break;
+	   }
+	   //console.log(e);
+	}
+	
 	this.remove=function(){
+	    this.removed=true;
 		if(canvDiv.contains(box)){
 			//console.log(canvDiv.contains(box));
 			try{

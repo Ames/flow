@@ -86,7 +86,13 @@ var Node=function Node(dArg,iArg){
 		obj.i={};
 		for(var ii in this.inputs){
 			//if(!this.inputs[ii].src.node)
-			obj.i[ii]=this.inputs[ii].src.val;
+			var val=this.inputs[ii].src.val;
+			
+			if(!isFinite(val)){
+			  val=val.toString();
+			}
+			 
+			obj.i[ii]=val;
 		}
 		for(var ii in this.vars){
 			if(!obj.vars)
