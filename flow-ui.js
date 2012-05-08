@@ -14,8 +14,8 @@ function makeLibrary(){
 	
 	newTxt+='Add:<ul>';
 	
-	for(var ii in nodeTypes){
-		newTxt+='<li><a href="#" onmousedown="dragging=[makeNode({type:\''+ii+'\',x:event.clientX-30,y:event.clientY-10})];return false;" onclick="return false;">'+ii+'</a></li>'
+	for(var ii in types){
+		newTxt+='<li><a href="#" onmousedown="dragging=[makeNode({type:\''+types[ii].type+'\',x:event.clientX-30,y:event.clientY-10})];return false;" onclick="return false;" title="'+(types[ii].info?types[ii].info:"")+'">'+types[ii].type+'</a></li>'
 	}
 	newTxt+='</ul>'
 	
@@ -140,7 +140,7 @@ document.onmousemove=function mouseMove(e){
 	
 	newMouse=getMouse(e);
 
-	if(dragging){
+	if(window.dragging){
 		var dx=newMouse[0]-mouse[0];
 		var dy=newMouse[1]-mouse[1];
 		for(var ii in dragging){
@@ -149,12 +149,12 @@ document.onmousemove=function mouseMove(e){
 			dragging[ii].widget.upLoc();
 		}
 	}
-	if(wiring){
+	if(window.wiring){
 		wiring[3][0]=newMouse[0];
 		wiring[3][1]=newMouse[1];
 		wiring[2].redraw();
 	}
-	if(selectStart){
+	if(window.selectStart){
 		selectBox.style.width=Math.abs(newMouse[0]-selectStart[0])+'px';
 		selectBox.style.height=Math.abs(newMouse[1]-selectStart[1])+'px';
 		selectBox.style.left=Math.min(newMouse[0],selectStart[0])+'px';
