@@ -1,23 +1,23 @@
 
 var types=[
 {type:'Buffer',
-   	title:'',
-   	info:"output=input",
-   	i:{in:0},
-   	o:{out:0},
-   	f:function(i,o){
-   		o.out=i.in;
-   	}
+	title:"",
+	info:"output=input",
+	i:{in_:0},
+	o:{out:0},
+	f:function(i,o){
+		o.out=i.in_;
+	}
 },{type:'Logger',
 	title:'console.log()',
-   	info:"Prints the input to the browser console.",
+	info:"Prints the input to the browser console.",
 	i:{msg:""},
 	f:function(i,o){
 		console.log(i.msg);
 	}
 },{type:'Summer',
 	title:'Sum',
-   	info:"c=a+b",
+	info:"c=a+b",
 	i:{a:1,b:2},
 	o:{c:3},
 	f:function(i,o){
@@ -25,7 +25,7 @@ var types=[
 	}
 },{type:'Multiply',
 	title:'Multiply',
-   	info:"c=a*b",
+	info:"c=a*b",
 	i:{a:1,b:2},
 	o:{c:3},
 	f:function(i,o){
@@ -33,7 +33,7 @@ var types=[
 	}
 },{type:'Sine',
 	title:'Sine',
-   	info:"Generates a sine wave",
+	info:"Generates a sine wave",
 	i:{freq:2,amp:1,phase:0},
 	o:{y:0},
 	step:function(i,o){
@@ -41,7 +41,7 @@ var types=[
 	}
 },{type:'Square',
 	title:'Square',
-   	info:"Generates a square wave",
+	info:"Generates a square wave",
 	i:{freq:2,amp:1,phase:0},
 	o:{y:0},
 	step:function(i,o){
@@ -49,23 +49,23 @@ var types=[
 	}
 },{type:'IIR Lowpass',
 	title:'IIR Lowpass',
-   	info:"A simple lowpass filter",
+	info:"A simple lowpass filter",
 	i:{x:0,factor:1},
 	o:{y:0},
 	step:function(i,o){
-	    i.factor=parseFloat(i.factor);
+		 i.factor=parseFloat(i.factor);
 		o.y=(o.y*i.factor+i.x)/(1+i.factor);
 	}
 },{type:'Time',
 	title:"Time",
-   	info:"The current simulation time",
+	info:"The current simulation time",
 	o:{t:0},
 	step:function(i,o){
 		o.t=curTime;
 	}
 },{type:'Mouse',
 	title:"Mouse",
-   	info:"The current mouse position",
+	info:"The current mouse position",
 	o:{x:0,y:0},
 	init:function(i,o,that){
 		that.handleMove=function(e){
@@ -84,7 +84,7 @@ var types=[
 //		o.y=mouse[1];
 //	}
 },{type:'Scope',
-   	info:"Plots y vs. x",
+	info:"Plots y vs. x",
 	i:{x:0,y1:0,y2:0,y3:0},
 	init:function(i,o,that){
 		that._={};
@@ -214,7 +214,7 @@ var types=[
 	}
 },{type:'Custom',
 	title:'custom',
-   	info:"Evaluates Javascript code. Inputs are in (i), outputs go in (o).",
+	info:"Evaluates Javascript code. Inputs are in (i), outputs go in (o).",
 	i:{a:1,b:0,c:0},
 	o:{x:0,y:0,z:0},
 	vars:{txt:"o.x=Math.sin(3.1*Math.PI*i.a)\n	+Math.sin(7*Math.PI*i.a)/2-3;\n\no.y=Math.random()-6;\no.z=i.a % 1;"},
@@ -274,7 +274,7 @@ var types=[
 		}
 	}
 },{type:'hSlider',
-   	info:"Horizontal Slider",
+	info:"Horizontal Slider",
 	i:{i:0,min:0,max:1},
 	o:{o:0},
 	vars:{value:0},
@@ -283,11 +283,11 @@ var types=[
 		inp.type='range';
 		
 		inp.setRange=function(min,max){
-		    var tmp=this.value;
-    		this.min=min;
-    		this.max=max;
-		    this.step=(max-min)/1000;
-		    this.value=tmp;
+			 var tmp=this.value;
+	 		this.min=min;
+	 		this.max=max;
+			 this.step=(max-min)/1000;
+			 this.value=tmp;
 		}
 		
 		inp.setRange(i.min,i.max);
@@ -308,14 +308,14 @@ var types=[
 		that.inp=inp;
 	},
 	f:function(i,o,that){
-	   that.inp.setRange(i.min,i.max);
-	   
-	   that.inp.value=i.i;
-	   that.inp.onchange();
+		that.inp.setRange(i.min,i.max);
+		
+		that.inp.value=i.i;
+		that.inp.onchange();
 	}
 },{type:'Accel',
 	title:'Accelerometer',
-   	info:"Accelerometer data (if avalable)",
+	info:"Accelerometer data (if avalable)",
 	o:{x:0,y:0},
 	init:function(i,o,that){
 		
@@ -326,23 +326,23 @@ var types=[
 		
 		// http://stackoverflow.com/questions/4378435/how-to-access-accelerometer-gyroscope-data-from-javascript
 		if (window.DeviceOrientationEvent) {
-		    window.addEventListener("deviceorientation", function () {
-		        that.tilt([event.beta, event.gamma]);
-		    }, true);
+			 window.addEventListener("deviceorientation", function () {
+				  that.tilt([event.beta, event.gamma]);
+			 }, true);
 		} else if (window.DeviceMotionEvent) {
-		    window.addEventListener('devicemotion', function () {
-		        that.tilt([event.acceleration.x * 2, event.acceleration.y * 2]);
-		    }, true);
+			 window.addEventListener('devicemotion', function () {
+				  that.tilt([event.acceleration.x * 2, event.acceleration.y * 2]);
+			 }, true);
 		} else {
-		    window.addEventListener("MozOrientation", function () {
-		        that.tilt([orientation.x * 50, orientation.y * 50]);
-		    }, true);
+			 window.addEventListener("MozOrientation", function () {
+				  that.tilt([orientation.x * 50, orientation.y * 50]);
+			 }, true);
 		}
 
 	}
 },{type:'check',
 	title:'',
-   	info:"A Checkbox. Push to toggle.",
+	info:"A Checkbox. Push to toggle.",
 	i:{i:false},
 	o:{o:false},
 	vars:{checked:false},
@@ -367,7 +367,7 @@ var types=[
 	}
 },{type:'button',
 	title:'',
-   	info:"A Button. On when pressed.",
+	info:"A Button. On when pressed.",
 	o:{o:false},
 	init:function(i,o,that){
 		var inp=document.createElement('input');
@@ -387,7 +387,7 @@ var types=[
 	}
 },{type:'AND',
 	title:'AND',
-   	info:"y = a && b",
+	info:"y = a && b",
 	i:{a:0,b:0},
 	o:{y:0},
 	f:function(i,o,that){
@@ -395,7 +395,7 @@ var types=[
 	}
 },{type:'OR',
 	title:'OR',
-   	info:"y = a || b",
+	info:"y = a || b",
 	i:{a:0,b:0},
 	o:{y:0},
 	f:function(i,o,that){
@@ -403,7 +403,7 @@ var types=[
 	}
 },{type:'NAND',
 	title:'NAND',
-   	info:"y = !( a && b )",
+	info:"y = !( a && b )",
 	i:{a:0,b:0},
 	o:{y:0},
 	f:function(i,o,that){
@@ -411,7 +411,7 @@ var types=[
 	}
 },{type:'NOR',
 	title:'NOR',
-   	info:"y = !( a || b )",
+	info:"y = !( a || b )",
 	i:{a:0,b:0},
 	o:{y:0},
 	f:function(i,o,that){
@@ -419,7 +419,7 @@ var types=[
 	}
 },{type:'NOT',
 	title:'NOT',
-   	info:"y = !a",
+	info:"y = !a",
 	i:{a:0},
 	o:{y:0},
 	f:function(i,o,that){
@@ -427,7 +427,7 @@ var types=[
 	}
 },{type:'XOR',
 	title:'XOR',
-   	info:"y = ( a != b )",
+	info:"y = ( a != b )",
 	i:{a:0,b:0},
 	o:{y:0},
 	f:function(i,o,that){
@@ -437,7 +437,7 @@ var types=[
 	}
 },{type:'Topic',
 	title:'Topic',
-   	info:"Sends data to ANY other node with the same 'Topic Name'",
+	info:"Sends data to ANY other node with the same 'Topic Name'",
 	i:{val:0},
 	o:{val:0},
 	vars:{topic:""},
