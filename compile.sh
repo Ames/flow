@@ -1,6 +1,6 @@
 #! /bin/sh
 
-java -jar ~/Desktop/compiler-latest/compiler.jar \
+java -jar ../compiler-latest/compiler.jar \
     --js=flow-main.js   \
     --js=flow-node.js   \
     --js=flow-ui.js     \
