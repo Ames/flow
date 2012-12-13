@@ -32,13 +32,13 @@ var examples=[
 			{type:'Sine'  ,x:200,y:300,i:{freq:4.05}},//5
 			{type:'Scope' ,x:500,y:350}, //6
 			{type:'Custom',x:200,y:400}, //7
-			{type:'X2'    ,x:350,y:150}  //8
+			{type:'Multiply',x:350,y:150,i:{b:2}}  //8
 		],wires:[
 			{n1:4,p1:'y',n2:5,p2:'amp',color:100},
 			{n1:5,p1:'y',n2:6,p2:'y1' ,color:220},
 			
 			{n1:1,p1:'c',n2:8,p2:'a'  ,color:  0},
-			{n1:8,p1:'b',n2:0,p2:'msg',color:100},
+			{n1:8,p1:'c',n2:0,p2:'msg',color:100},
 			
 			{n1:3,p1:'t',n2:7,p2:'a'  ,color:320},
 			{n1:3,p1:'t',n2:6,p2:'x'  ,color:320},
