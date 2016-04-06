@@ -65,8 +65,8 @@ scn:{"nodes":[
 function init(){
 	canvDiv=document.getElementById('container');
 	
-	
-    socket=io.connect('http://login.sccs.swarthmore.edu:8201');
+	if (document.io)
+    	socket=io.connect('http://login.sccs.swarthmore.edu:8201');
 
 
 	makeTypes();
