@@ -36,11 +36,6 @@ function openLocal(){
 	loadScene(JSON.parse(localStorage.getItem('scene')));
 }
 
-function clearLocal(){
-	deleteNodes(nodes);
-	curTime=0;
-}
-
 function loadScene(scn){
 	deleteNodes(nodes);
 

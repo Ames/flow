@@ -435,7 +435,7 @@ var types=[
 		o.y=(i.a<=0) != (i.b<=0);
 		//o.y=i.a ^ i.b;
 	}
-},{type:'Topic',
+}/*,{type:'Topic',
 	title:'Topic',
 	info:"Sends data to ANY other node with the same 'Topic Name'",
 	i:{val:0},
@@ -520,7 +520,7 @@ var types=[
 			}
 		}
 	}
-}];
+}*/];
 
 
 var nodeTypes={};
