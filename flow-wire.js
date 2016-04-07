@@ -26,11 +26,19 @@ var Wire=function Wire(p1,p2,color){
 		var h=Math.abs(p1[1]-p2[1])+margin*2;
 
 		//TODO: find a better value for half so that the wires adapt betterto the nodes separation
-		var half=((-(p1[0]-p2[0])+margin*2)+200)/4;
+		//var half=w/3*((p1[1]>p2[1])?1:2)
+		var halfA=w/3*((p1[1]>p2[1])?2:1);
+		var halfB=w/3*((p1[1]>p2[1])?1:2);
+		var halfC=w/10+100;
+		
+		var k=sigmoid(0.01*(p1[0]-p2[0]));
+		
+		var half1=k*halfA+(1-k)*halfC;
+		var half2=k*halfB+(1-k)*halfC;
 
 		var bb=bezierBoundingBox(p1[0]-x,p1[1]-y,
-								 p1[0]-x-half,p1[1]-y,
-								 p2[0]-x+half,p2[1]-y,
+								 p1[0]-x-half1,p1[1]-y,
+								 p2[0]-x+half2,p2[1]-y,
 								 p2[0]-x,p2[1]-y);
 
 		element.style.left=x+bb.min.x-0.5*thick;
@@ -45,8 +53,8 @@ var Wire=function Wire(p1,p2,color){
 		ctx.lineWidth=thick;
 		ctx.beginPath();
 		ctx.moveTo(p1[0]-x-bb.min.x+0.5*thick,p1[1]-y);
-		ctx.bezierCurveTo(p1[0]-x-half-bb.min.x+0.5*thick,p1[1]-y,
-						  p2[0]-x+half-bb.min.x+thick,p2[1]-y,
+		ctx.bezierCurveTo(p1[0]-x-half1-bb.min.x+0.5*thick,p1[1]-y,
+						  p2[0]-x+half2-bb.min.x+thick,p2[1]-y,
 						  p2[0]-x-bb.min.x+thick,p2[1]-y);
 		
 		//ctx.lineTo(p2[0]-x,p2[1]-y);
@@ -170,4 +178,8 @@ function bezierBoundingBox(x0, y0, x1, y1, x2, y2, x3, y3) {
 	min: {x: Math.min.apply(0, xvalues), y: Math.min.apply(0, yvalues)},
 	max: {x: Math.max.apply(0, xvalues), y: Math.max.apply(0, yvalues)}
 	};
+}
+
+function sigmoid(t) {
+	return 1/(1+Math.pow(Math.E, -t));
 }
