@@ -94,17 +94,25 @@ document.onkeydown = function keyDown( e ) {
 
 
 document.onmousedown = function mouseDown( e ) {
-	mouse = getMouse( e );
 	// console.log(e);
-	if ( e.target.id == "container" || e.target.nodeName == "HTML" ) { // probably won't work in ff
-		if ( !selectBox ) {
-			selectBox = document.createElement("div" );
-			canvDiv.appendChild( selectBox );
-			selectBox.className = "selectBox";
+	mouse = getMouse( e );
+
+	if ( e.which == 1 ) { // left button
+		if ( e.target.id == "container" || e.target.nodeName == "HTML" ) { // probably won't work in ff
+			if ( !selectBox ) {
+				selectBox = document.createElement("div" );
+				canvDiv.appendChild( selectBox );
+				selectBox.className = "selectBox";
+			}
+			selectStart = getMouse( e );
+			doSelectBox();
+		} else if ( e.target.type != "textarea" && e.target.type != "input") {
+			document.activeElement.blur();
+			e.preventDefault();
 		}
-		selectStart = getMouse( e );
-		doSelectBox();
 	}
+
+	e.stopPropagation();
 };
 
 function select( node ) {
@@ -126,47 +134,55 @@ function deselect( node ) {
 document.onmouseup = function mouseUp( e ) {
 	mouse = getMouse( e );
 
-	dragging = null;
-	if ( wiring ) {
-		wiring[ 2 ].remove();
-		wiring = null;
+	if ( e.which == 1 ) { // left button
+		dragging = null;
+		if ( wiring ) {
+			wiring[ 2 ].remove();
+			wiring = null;
+		}
+		if ( selectStart ) {
+			doSelectBox();
+			selectStart = false;
+			selectBox.style.visibility = "hidden";
+		}
 	}
-	if ( selectStart ) {
-		doSelectBox();
-		selectStart = false;
-		selectBox.style.visibility = "hidden";
-	}
+
+	e.stopPropagation();
+	e.preventDefault();
 };
 
 document.onmousemove = function mouseMove( e ) {
 
 	newMouse = getMouse( e );
 
-	if ( window.dragging ) {
-		var dx = newMouse[ 0 ] - mouse[ 0 ];
-		var dy = newMouse[ 1 ] - mouse[ 1 ];
-		for ( var ii in dragging ) {
-			dragging[ ii ].widget.x += dx;
-			dragging[ ii ].widget.y += dy;
-			dragging[ ii ].widget.upLoc();
+	if ( e.which == 1 ) { // left button
+		if ( window.dragging ) {
+			var dx = newMouse[ 0 ] - mouse[ 0 ];
+			var dy = newMouse[ 1 ] - mouse[ 1 ];
+			for ( var ii in dragging ) {
+				dragging[ ii ].widget.x += dx;
+				dragging[ ii ].widget.y += dy;
+				dragging[ ii ].widget.upLoc();
+			}
+		}
+		if ( window.wiring ) {
+			wiring[ 3 ][ 0 ] = newMouse[ 0 ];
+			wiring[ 3 ][ 1 ] = newMouse[ 1 ];
+			wiring[ 2 ].redraw();
+		}
+		if ( window.selectStart ) {
+			selectBox.style.width = Math.abs( newMouse[ 0 ] - selectStart[ 0 ] ) + "px";
+			selectBox.style.height = Math.abs( newMouse[ 1 ] - selectStart[ 1 ] ) + "px";
+			selectBox.style.left = Math.min( newMouse[ 0 ], selectStart[ 0 ] ) + "px";
+			selectBox.style.top = Math.min( newMouse[ 1 ], selectStart[ 1 ] ) + "px";
+			selectBox.style.visibility = "visible";
+			doSelectBox();
 		}
 	}
-	if ( window.wiring ) {
-		wiring[ 3 ][ 0 ] = newMouse[ 0 ];
-		wiring[ 3 ][ 1 ] = newMouse[ 1 ];
-		wiring[ 2 ].redraw();
-	}
-	if ( window.selectStart ) {
-		selectBox.style.width = Math.abs( newMouse[ 0 ] - selectStart[ 0 ] ) + "px";
-		selectBox.style.height = Math.abs( newMouse[ 1 ] - selectStart[ 1 ] ) + "px";
-		selectBox.style.left = Math.min( newMouse[ 0 ], selectStart[ 0 ] ) + "px";
-		selectBox.style.top = Math.min( newMouse[ 1 ], selectStart[ 1 ] ) + "px";
-		selectBox.style.visibility = "visible";
-		doSelectBox();
-	}
+
+	e.preventDefault();
 
 	mouse = newMouse;
-
 };
 
 document.onblur = function() {
