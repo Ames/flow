@@ -104,7 +104,10 @@ document.onmousedown = function mouseDown( e ) {
 				canvDiv.appendChild( selectBox );
 				selectBox.className = "selectBox";
 			}
-			selectStart = getMouse( e );
+			var zoom = canvDiv.style.zoom || 1.0;
+			var left = mouse[ 0 ] / zoom - parseFloat( canvDiv.style.left || 0 ) ;
+			var top = mouse[ 1 ] / zoom - parseFloat( canvDiv.style.top || 0 ) ;
+			selectStart = [ left, top ];
 			doSelectBox();
 		} else if ( e.target.type != "textarea" && e.target.type != "input") {
 			document.activeElement.blur();
@@ -171,10 +174,13 @@ document.onmousemove = function mouseMove( e ) {
 			wiring[ 2 ].redraw();
 		}
 		if ( window.selectStart ) {
-			selectBox.style.width = Math.abs( newMouse[ 0 ] - selectStart[ 0 ] ) + "px";
-			selectBox.style.height = Math.abs( newMouse[ 1 ] - selectStart[ 1 ] ) + "px";
-			selectBox.style.left = Math.min( newMouse[ 0 ], selectStart[ 0 ] ) + "px";
-			selectBox.style.top = Math.min( newMouse[ 1 ], selectStart[ 1 ] ) + "px";
+			var zoom = canvDiv.style.zoom || 1.0;
+			var left = newMouse[ 0 ] / zoom - parseFloat( canvDiv.style.left || 0 ) ;
+			var top = e.y / zoom - parseFloat( canvDiv.style.top || 0 );
+			selectBox.style.width = Math.abs( left - selectStart[ 0 ] ) + "px";
+			selectBox.style.height = Math.abs( top - selectStart[ 1 ] ) + "px";
+			selectBox.style.left = Math.min( left, selectStart[ 0 ] ) + "px";
+			selectBox.style.top = Math.min( top, selectStart[ 1 ] ) + "px";
 			selectBox.style.visibility = "visible";
 			doSelectBox();
 		}
@@ -196,8 +202,8 @@ document.onblur = function() {
 document.onmousewheel = function mousewheel( e ) {
 	var zoom = canvDiv.style.zoom || 1.0;
 
-	var left = e.x / zoom - parseFloat(canvDiv.style.left || 0);
-	var top = e.y / zoom - parseFloat(canvDiv.style.top || 0);
+	var left = e.x / zoom - parseFloat( canvDiv.style.left || 0 );
+	var top = e.y / zoom - parseFloat( canvDiv.style.top || 0 );
 
 	var delta = (e.wheelDeltaY != null ? e.wheelDeltaY : e.detail * -60);
 
