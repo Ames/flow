@@ -193,6 +193,28 @@ document.onblur = function() {
 	}
 };
 
+document.onmousewheel = function mousewheel( e ) {
+	var zoom = canvDiv.style.zoom || 1.0;
+
+	var left = e.x / zoom - parseFloat(canvDiv.style.left || 0);
+	var top = e.y / zoom - parseFloat(canvDiv.style.top || 0);
+
+	var delta = (e.wheelDeltaY != null ? e.wheelDeltaY : e.detail * -60);
+
+	if ( delta > 0 ) {
+		zoom *= 1 + 0.05;
+	} else if ( delta < 0 ) {
+		zoom /= 1 + 0.05;
+	}
+	zoom = Math.min( Math.max( zoom, 0.2 ), 1.0 );
+
+	canvDiv.style.zoom = zoom;
+	canvDiv.style.left = (e.x / zoom - left ) + "px";
+	canvDiv.style.top = (e.y / zoom - top ) + "px";
+
+	e.preventDefault();
+};
+
 
 function doSelectBox() {
 	var xMin = Math.min( mouse[ 0 ], selectStart[ 0 ] );
