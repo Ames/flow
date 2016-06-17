@@ -27,19 +27,16 @@ var Wire = function Wire( p1, p2, color ) {
 
 		// TODO: find a better value for half so that the wires adapt betterto the nodes separation
 		// var half=w/3*((p1[1]>p2[1])?1:2)
-		var halfA = w / 3 * ((p1[ 1 ] > p2[ 1 ]) ? 2 : 1);
-		var halfB = w / 3 * ((p1[ 1 ] > p2[ 1 ]) ? 1 : 2);
-		var halfC = w / 10 + 100;
 
-		var k = sigmoid( 0.01 * (p1[ 0 ] - p2[ 0 ]) );
+		var dist = computeWireDistance( p1, p2 );
+		var control = 0.25;
 
-		var half1 = k * halfA + (1 - k) * halfC;
-		var half2 = k * halfB + (1 - k) * halfC;
+		var half = dist * control;
 
 		var bb = bezierBoundingBox( p1[ 0 ] - x, p1[ 1 ] - y,
-								 p1[ 0 ] - x - half1, p1[ 1 ] - y,
-								 p2[ 0 ] - x + half2, p2[ 1 ] - y,
-								 p2[ 0 ] - x, p2[ 1 ] - y );
+			p1[ 0 ] - x - half, p1[ 1 ] - y,
+			p2[ 0 ] - x + half, p2[ 1 ] - y,
+			p2[ 0 ] - x, p2[ 1 ] - y );
 
 		element.style.left = x + bb.min.x - 0.5 * thick;
 		element.style.top = y;
@@ -53,9 +50,9 @@ var Wire = function Wire( p1, p2, color ) {
 		ctx.lineWidth = thick;
 		ctx.beginPath();
 		ctx.moveTo( p1[ 0 ] - x - bb.min.x + 0.5 * thick, p1[ 1 ] - y );
-		ctx.bezierCurveTo( p1[ 0 ] - x - half1 - bb.min.x + 0.5 * thick, p1[ 1 ] - y,
-						  p2[ 0 ] - x + half2 - bb.min.x + thick, p2[ 1 ] - y,
-						  p2[ 0 ] - x - bb.min.x + thick, p2[ 1 ] - y );
+		ctx.bezierCurveTo( p1[ 0 ] - x - half - bb.min.x + 0.5 * thick, p1[ 1 ] - y,
+			p2[ 0 ] - x + half - bb.min.x + thick, p2[ 1 ] - y,
+			p2[ 0 ] - x - bb.min.x + thick, p2[ 1 ] - y );
 
 		// ctx.lineTo(p2[0]-x,p2[1]-y);
 		ctx.stroke();
@@ -65,6 +62,35 @@ var Wire = function Wire( p1, p2, color ) {
 		canvDiv.removeChild( element );
 	};
 };
+
+function computeWireDistance( a, b ) {
+	// connection going forward
+	var df = 100;
+	const sf = 2;
+	// connection going backwards
+	var db = 600;
+	const sb = 4;
+	// transition threshold
+	const th = 300;
+
+	var d = Math.dist( a[ 0 ], a[ 1 ], b[ 0 ], b[ 1 ] );
+	// var d = b[0] - a[0];
+
+	// fix distance
+	df = df + (d - df) / sf;
+	db = db + (d - db) / sb;
+
+	if ( a[ 0 ] < b[ 0 ] ) { // forward
+		d = df;
+	} else if ( a[ 0 ] > b[ 0 ] + th ) { // backwards
+		d = db;
+	} else { // transition
+		var t = (a[ 0 ] - b[ 0 ]) / th;
+		d = (1 - t) * df + t * db;
+	}
+
+	return d;
+}
 
 function mkWire( n1, p1, n2, p2, color ) { // link p1 (output) to p2 (input)
 	if ( !n1.outputs[ p1 ] || !n2.inputs[ p2 ] ) {
