@@ -63,7 +63,7 @@ var Wire = function Wire( p1, p2, color ) {
 	};
 };
 
-function computeWireDistance( b, a ) {
+function computeWireDistance( a, b ) {
 	// connection going forward
 	var df = 100;
 	const sf = 2;
@@ -74,19 +74,19 @@ function computeWireDistance( b, a ) {
 	const th = 300;
 
 	var d = Math.dist( a[ 0 ], a[ 1 ], b[ 0 ], b[ 1 ] );
-	// var d = b[0] - a[0];
+	// var d = a[0] - b[0];
 
 	// fix distance
 	df = df + (d - df) / sf;
 	db = db + (d - db) / sb;
 
-	if ( a[ 0 ] < b[ 0 ] ) { // forward
+	if ( a[ 0 ] > b[ 0 ] ) { // forward
 		d = df;
-	} else if ( a[ 0 ] > b[ 0 ] + th ) { // backwards
+	} else if ( a[ 0 ] < b[ 0 ] - th ) { // backwards
 		d = db;
 	} else { // transition
 		var t = (a[ 0 ] - b[ 0 ]) / th;
-		d = (1 - t) * df + t * db;
+		d = (1 + t) * df - t * db;
 	}
 
 	return d;
