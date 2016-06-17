@@ -1,0 +1,225 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		E4DE5FA11D138281004F5810 /* flow-examples.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-examples.js"; sourceTree = "<group>"; };
+		E4DE5FA21D138281004F5810 /* flow-main.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-main.js"; sourceTree = "<group>"; };
+		E4DE5FA31D138281004F5810 /* flow-min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-min.js"; sourceTree = "<group>"; };
+		E4DE5FA41D138281004F5810 /* flow-node.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-node.js"; sourceTree = "<group>"; };
+		E4DE5FA51D138281004F5810 /* flow-types.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-types.js"; sourceTree = "<group>"; };
+		E4DE5FA61D138281004F5810 /* flow-ui.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-ui.js"; sourceTree = "<group>"; };
+		E4DE5FA71D138281004F5810 /* flow-widget.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-widget.js"; sourceTree = "<group>"; };
+		E4DE5FA81D138281004F5810 /* flow-wire.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-wire.js"; sourceTree = "<group>"; };
+		E4DE5FA91D138281004F5810 /* flow.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = flow.css; sourceTree = "<group>"; };
+		E4DE5FAA1D138281004F5810 /* grid25l.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = grid25l.gif; sourceTree = "<group>"; };
+		E4DE5FAB1D138281004F5810 /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		E4DE5FAC1D138281004F5810 /* license.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
+		E4DE5FAD1D138281004F5810 /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		E4DE5FAE1D1383D9004F5810 /* .eslintrc.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = .eslintrc.json; sourceTree = "<group>"; };
+		E4DE5FAF1D1383D9004F5810 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		E4DE5FB01D1383D9004F5810 /* .jscsrc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .jscsrc; sourceTree = "<group>"; };
+		E4DE5FB11D1383D9004F5810 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
+		E4DE5FB21D13844B004F5810 /* package.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
+		E4DE5FB31D1384E6004F5810 /* eslint_reporter.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = eslint_reporter.js; sourceTree = "<group>"; };
+		E4DE5FB41D1384E6004F5810 /* jscs_reporter.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = jscs_reporter.js; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		E457C6831CEB9D6D00BFBE0D = {
+			isa = PBXGroup;
+			children = (
+				E4DE5FA11D138281004F5810 /* flow-examples.js */,
+				E4DE5FA21D138281004F5810 /* flow-main.js */,
+				E4DE5FA31D138281004F5810 /* flow-min.js */,
+				E4DE5FA41D138281004F5810 /* flow-node.js */,
+				E4DE5FA51D138281004F5810 /* flow-types.js */,
+				E4DE5FA61D138281004F5810 /* flow-ui.js */,
+				E4DE5FA71D138281004F5810 /* flow-widget.js */,
+				E4DE5FA81D138281004F5810 /* flow-wire.js */,
+				E4DE5FA91D138281004F5810 /* flow.css */,
+				E4DE5FAA1D138281004F5810 /* grid25l.gif */,
+				E4DE5FAB1D138281004F5810 /* index.html */,
+				E4DE5FAC1D138281004F5810 /* license.txt */,
+				E4DE5FAD1D138281004F5810 /* README.txt */,
+				E4DE5FAE1D1383D9004F5810 /* .eslintrc.json */,
+				E4DE5FAF1D1383D9004F5810 /* .gitignore */,
+				E4DE5FB01D1383D9004F5810 /* .jscsrc */,
+				E4DE5FB11D1383D9004F5810 /* .travis.yml */,
+				E4DE5FB21D13844B004F5810 /* package.json */,
+				E4DE5FB31D1384E6004F5810 /* eslint_reporter.js */,
+				E4DE5FB41D1384E6004F5810 /* jscs_reporter.js */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		E457C6971CEB9E0E00BFBE0D /* Demo */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = build;
+			buildConfigurationList = E457C6981CEB9E0E00BFBE0D /* Build configuration list for PBXLegacyTarget "Demo" */;
+			buildPhases = (
+			);
+			buildToolPath = npm;
+			buildWorkingDirectory = "$(SRCROOT)";
+			dependencies = (
+			);
+			name = Demo;
+			passBuildSettingsInEnvironment = 0;
+			productName = Demo;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXProject section */
+		E457C6841CEB9D6D00BFBE0D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				TargetAttributes = {
+					E457C6971CEB9E0E00BFBE0D = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = E457C6871CEB9D6D00BFBE0D /* Build configuration list for PBXProject "flow" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E457C6831CEB9D6D00BFBE0D;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E457C6971CEB9E0E00BFBE0D /* Demo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		E457C6881CEB9D6D00BFBE0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		E457C6891CEB9D6D00BFBE0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		E457C6991CEB9E0E00BFBE0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E457C69A1CEB9E0E00BFBE0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E457C6871CEB9D6D00BFBE0D /* Build configuration list for PBXProject "flow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E457C6881CEB9D6D00BFBE0D /* Debug */,
+				E457C6891CEB9D6D00BFBE0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E457C6981CEB9E0E00BFBE0D /* Build configuration list for PBXLegacyTarget "Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E457C6991CEB9E0E00BFBE0D /* Debug */,
+				E457C69A1CEB9E0E00BFBE0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E457C6841CEB9D6D00BFBE0D /* Project object */;
+}

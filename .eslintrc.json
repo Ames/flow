@@ -1,0 +1,25 @@
+{
+	"extends": "eslint:recommended",
+	"rules": {
+		"comma-dangle": 0,
+		"no-console": 0,
+		"no-constant-condition": 0,
+		"semi": 1
+	},
+	"parserOptions": {
+		"ecmaVersion": 6,
+		"ecmaFeatures": {
+			"jsx": true
+		}
+	},
+	"env": {
+		"browser": true,
+		"node": true,
+		"es6": true,
+		"mocha": true
+	},
+	"plugins": [
+	],
+	"globals": {
+	}
+}
