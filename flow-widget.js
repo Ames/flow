@@ -125,6 +125,8 @@ var Widget = function Widget( node ) {
 
 	var handleDown = function( e ) {
 
+		// bring to front
+		canvDiv.appendChild( div );
 
 		var pt = getMouse( e );
 
@@ -159,7 +161,7 @@ var Widget = function Widget( node ) {
 			}
 
 			// if hovering an output port
-		}else if ( prtn = hoverPorts( node.outputs, pt ) ) {
+		} else if ( prtn = hoverPorts( node.outputs, pt ) ) {
 			var prt = node.outputs[ prtn ];
 			var tmpWire = new Wire( pt, prt.pt, "#555" );
 			wiring = [ node, prtn, tmpWire, pt ];
@@ -218,7 +220,7 @@ var Widget = function Widget( node ) {
 						node.inputs[ prtn ].src.val = newVal;
 						node.inputs[ prtn ].src.flag = -1;
 				        // }
-				    }catch ( err ) {
+				    } catch ( err ) {
 
 				    }
 
@@ -420,7 +422,7 @@ function EditBox( pt, cur, callback ) {
 			// console.log(canvDiv.contains(box));
 			try {
 				canvDiv.removeChild( box );
-			}catch ( err ) {
+			} catch ( err ) {
 
 			}
 		}

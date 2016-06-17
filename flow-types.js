@@ -199,7 +199,7 @@ var types = [
 
 				if ( x < px ) {
 					ctx.moveTo( x, y );
-				}else {
+				} else {
 					ctx.lineTo( x, y );
 				}
 				px = x;
@@ -249,7 +249,7 @@ var types = [
 			try {
 				that.newCode( that.vars.txt );
 				inp.style.backgroundColor = "";
-			}catch ( err ) {
+			} catch ( err ) {
 				ERR = err;
 				inp.style.backgroundColor = "#FDD";
 			}

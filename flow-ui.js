@@ -124,7 +124,7 @@ function deselect( node ) {
 	if ( node ) {
 		selected.splice( selected.indexOf( node ), 1 );
 		node.widget.redraw();
-	}else {
+	} else {
 		for ( var ii = selected.length - 1; ii >= 0; ii-- ) {
 			deselect( selected[ ii ] );
 		}
@@ -209,7 +209,7 @@ function doSelectBox() {
 
 		if ( over && selected.indexOf( n ) == -1 ) {
 			select( n );
-		}else if ( !over && selected.indexOf( n ) != -1 ) {
+		} else if ( !over && selected.indexOf( n ) != -1 ) {
 			deselect( n );
 		}
 	}
