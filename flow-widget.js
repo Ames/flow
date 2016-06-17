@@ -252,8 +252,8 @@ var Widget = function Widget( node ) {
 			if ( !nin.pt ) {
 				nin.pt = [];
 			}
-			nin.pt[ 0 ] = [ px + this.x ];
-			nin.pt[ 1 ] = [ py + this.y ];
+			nin.pt[ 0 ] = px + this.x;
+			nin.pt[ 1 ] = py + this.y;
 
 			if ( iLabels[ ii ] ) {
 				iLabels[ ii ].style.left = px + "px";
