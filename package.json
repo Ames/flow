@@ -15,7 +15,7 @@
 	"scripts": {
 		"build": "",
 		"test": "npm run jscs && npm run eslint",
-		"eslint": "node_modules/eslint/bin/eslint.js --format=eslint_reporter.js *.js",
-		"jscs": "node_modules/jscs/bin/jscs --reporter=jscs_reporter.js *.js"
+		"eslint": "node_modules/eslint/bin/eslint.js --format=./eslint_reporter.js *.js",
+		"jscs": "node_modules/jscs/bin/jscs --reporter=./jscs_reporter.js *.js"
 	}
 }

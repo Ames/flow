@@ -17,7 +17,7 @@
                BlueprintIdentifier = "E457C6971CEB9E0E00BFBE0D"
                BuildableName = "Demo"
                BlueprintName = "Demo"
-               ReferencedContainer = "container:LiteGraph.xcodeproj">
+               ReferencedContainer = "container:flow.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,6 +29,15 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "E457C6971CEB9E0E00BFBE0D"
+            BuildableName = "Demo"
+            BlueprintName = "Demo"
+            ReferencedContainer = "container:LiteGraph.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -46,15 +55,6 @@
          runnableDebuggingMode = "0"
          FilePath = "/usr/bin/open">
       </PathRunnable>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E457C6971CEB9E0E00BFBE0D"
-            BuildableName = "Demo"
-            BlueprintName = "Demo"
-            ReferencedContainer = "container:LiteGraph.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <CommandLineArguments>
          <CommandLineArgument
             argument = "$SRCROOT/index.html"
@@ -70,15 +70,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E457C6971CEB9E0E00BFBE0D"
-            BuildableName = "Demo"
-            BlueprintName = "Demo"
-            ReferencedContainer = "container:LiteGraph.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

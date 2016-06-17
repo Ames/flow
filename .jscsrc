@@ -1,6 +1,6 @@
 {
 	"preset": "idiomatic",
-	"excludeFiles": [ ],
+	"excludeFiles": [ "flow-min.js" ],
 	"validateLineBreaks": null,
 	"maximumLineLength": null,
 	"validateCommentPosition": null

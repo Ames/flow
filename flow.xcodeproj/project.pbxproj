@@ -27,6 +27,7 @@
 		E4DE5FB21D13844B004F5810 /* package.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
 		E4DE5FB31D1384E6004F5810 /* eslint_reporter.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = eslint_reporter.js; sourceTree = "<group>"; };
 		E4DE5FB41D1384E6004F5810 /* jscs_reporter.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = jscs_reporter.js; sourceTree = "<group>"; };
+		E4F285C01D138DBA005C6F4D /* .eslintignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .eslintignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -46,8 +47,9 @@
 				E4DE5FAB1D138281004F5810 /* index.html */,
 				E4DE5FAC1D138281004F5810 /* license.txt */,
 				E4DE5FAD1D138281004F5810 /* README.txt */,
-				E4DE5FAE1D1383D9004F5810 /* .eslintrc.json */,
 				E4DE5FAF1D1383D9004F5810 /* .gitignore */,
+				E4DE5FAE1D1383D9004F5810 /* .eslintrc.json */,
+				E4F285C01D138DBA005C6F4D /* .eslintignore */,
 				E4DE5FB01D1383D9004F5810 /* .jscsrc */,
 				E4DE5FB11D1383D9004F5810 /* .travis.yml */,
 				E4DE5FB21D13844B004F5810 /* package.json */,
