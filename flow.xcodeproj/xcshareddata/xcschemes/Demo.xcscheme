@@ -55,6 +55,15 @@
          runnableDebuggingMode = "0"
          FilePath = "/usr/bin/open">
       </PathRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "E457C6971CEB9E0E00BFBE0D"
+            BuildableName = "Demo"
+            BlueprintName = "Demo"
+            ReferencedContainer = "container:flow.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <CommandLineArguments>
          <CommandLineArgument
             argument = "$SRCROOT/index.html"
