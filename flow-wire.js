@@ -63,7 +63,7 @@ var Wire = function Wire( p1, p2, color ) {
 	};
 };
 
-function computeWireDistance( a, b ) {
+function computeWireDistance( b, a ) {
 	// connection going forward
 	var df = 100;
 	const sf = 2;
@@ -210,8 +210,4 @@ function bezierBoundingBox( x0, y0, x1, y1, x2, y2, x3, y3 ) {
 	min: { x: Math.min.apply( 0, xvalues ), y: Math.min.apply( 0, yvalues ) },
 	max: { x: Math.max.apply( 0, xvalues ), y: Math.max.apply( 0, yvalues ) }
 	};
-}
-
-function sigmoid( t ) {
-	return 1 / (1 + Math.pow( Math.E, -t ));
 }
