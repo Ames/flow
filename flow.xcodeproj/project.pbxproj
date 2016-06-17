@@ -9,7 +9,6 @@
 /* Begin PBXFileReference section */
 		E4DE5FA11D138281004F5810 /* flow-examples.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-examples.js"; sourceTree = "<group>"; };
 		E4DE5FA21D138281004F5810 /* flow-main.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-main.js"; sourceTree = "<group>"; };
-		E4DE5FA31D138281004F5810 /* flow-min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-min.js"; sourceTree = "<group>"; };
 		E4DE5FA41D138281004F5810 /* flow-node.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-node.js"; sourceTree = "<group>"; };
 		E4DE5FA51D138281004F5810 /* flow-types.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-types.js"; sourceTree = "<group>"; };
 		E4DE5FA61D138281004F5810 /* flow-ui.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-ui.js"; sourceTree = "<group>"; };
@@ -36,7 +35,6 @@
 			children = (
 				E4DE5FA11D138281004F5810 /* flow-examples.js */,
 				E4DE5FA21D138281004F5810 /* flow-main.js */,
-				E4DE5FA31D138281004F5810 /* flow-min.js */,
 				E4DE5FA41D138281004F5810 /* flow-node.js */,
 				E4DE5FA51D138281004F5810 /* flow-types.js */,
 				E4DE5FA61D138281004F5810 /* flow-ui.js */,
