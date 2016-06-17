@@ -15,7 +15,7 @@ var mouse = [ 0, 0 ];
 
 var wiring; // wire under consruction: [srcNode,srcPort,wire,pt]
 
-var play = true;
+var play = false;
 
 var socket;
 var localSocket = {};
@@ -86,13 +86,13 @@ function init() {
 
 
 var draw = function draw() {
-	if ( play ) {
+	// if ( play ) {
 		// step();
 
 		for ( var ii in nodes ) {
 			nodes[ ii ].draw();
 		}
-	}
+	// }
 };
 
 // main run loop
