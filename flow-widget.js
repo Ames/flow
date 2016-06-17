@@ -213,7 +213,6 @@ var Widget = function Widget( node ) {
 			var prt = node.inputs[ prtn ];
 			if ( !prt.src.node ) {
 				var eBox = new EditBox( prt.pt, node.inputs[ prtn ].src.val, function( v ) {
-
 				    try {
 				        var newVal = eval( v ); // yeah I know.
 						// if(!isNaN(newVal)){
@@ -223,8 +222,7 @@ var Widget = function Widget( node ) {
 				    } catch ( err ) {
 
 				    }
-
-
+					ths.upLabels();
 				});
 			}
 		}
