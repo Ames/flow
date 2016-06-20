@@ -2,7 +2,7 @@
 	"name": "flow",
 	"version": "v1.0.0-alpha",
 	"description": "node-based visual programming environment - inspired by Quartz Composer.",
-	"authors": "Rhody Lugo and Ames Bielenberg",
+	"authors": "Rhody Lugo",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
