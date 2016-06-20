@@ -176,7 +176,7 @@ document.onmousemove = function mouseMove( e ) {
 		if ( window.selectStart ) {
 			var zoom = canvDiv.style.zoom || 1.0;
 			var left = newMouse[ 0 ] / zoom - parseFloat( canvDiv.style.left || 0 ) ;
-			var top = e.y / zoom - parseFloat( canvDiv.style.top || 0 );
+			var top = newMouse[ 1 ] / zoom - parseFloat( canvDiv.style.top || 0 );
 			selectBox.style.width = Math.abs( left - selectStart[ 0 ] ) + "px";
 			selectBox.style.height = Math.abs( top - selectStart[ 1 ] ) + "px";
 			selectBox.style.left = Math.min( left, selectStart[ 0 ] ) + "px";
@@ -223,10 +223,14 @@ document.onmousewheel = function mousewheel( e ) {
 
 
 function doSelectBox() {
-	var xMin = Math.min( mouse[ 0 ], selectStart[ 0 ] );
-	var xMax = Math.max( mouse[ 0 ], selectStart[ 0 ] );
-	var yMin = Math.min( mouse[ 1 ], selectStart[ 1 ] );
-	var yMax = Math.max( mouse[ 1 ], selectStart[ 1 ] );
+	var zoom = canvDiv.style.zoom || 1.0;
+	var left = mouse[ 0 ] / zoom - parseFloat( canvDiv.style.left || 0 ) ;
+	var top = mouse[ 1 ] / zoom - parseFloat( canvDiv.style.top || 0 );
+
+	var xMin = Math.min( left, selectStart[ 0 ] );
+	var xMax = Math.max( left, selectStart[ 0 ] );
+	var yMin = Math.min( top, selectStart[ 1 ] );
+	var yMax = Math.max( top, selectStart[ 1 ] );
 
 	// selected=[];
 
