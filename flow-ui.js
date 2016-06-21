@@ -196,8 +196,6 @@ document.onblur = function() {
 document.onmousewheel = function mousewheel( e ) {
 	mouse = getMouse( e );
 
-	var zoom = canvDiv.style.zoom || 1.0;
-
 	var delta = (e.wheelDeltaY != null ? e.wheelDeltaY : e.detail * -60);
 
 	if ( delta > 0 ) {
