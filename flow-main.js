@@ -20,12 +20,8 @@ var play = false;
 var socket;
 var localSocket = {};
 
-var zoom = 1.0;
-
 function init() {
 	canvDiv = document.getElementById("container" );
-
-	zoom = canvDiv.style.zoom || 1.0;
 
 	if ( document.io ) {
 		socket = io.connect( "http://login.sccs.swarthmore.edu:8201" );

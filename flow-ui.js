@@ -2,6 +2,7 @@
 var selectStart;
 var selectBox;
 var selected = [];
+var zoom = 1.0;
 
 function makeLibrary() {
 
@@ -205,9 +206,13 @@ document.onmousewheel = function mousewheel( e ) {
 	}
 	zoom = Math.min( Math.max( zoom, 0.2 ), 1.0 );
 
-	canvDiv.style.zoom = zoom;
-	canvDiv.style.left = (e.x / zoom - mouse[ 0 ] ) + "px";
-	canvDiv.style.top = (e.y / zoom - mouse[ 1 ] ) + "px";
+	canvDiv.style.transform = "scale(" + zoom + ")";
+
+	var left = (e.x / zoom - mouse[ 0 ] );
+	canvDiv.style.left = (-0.5 * canvDiv.offsetWidth * ( 1 - zoom ) + zoom * left) + "px";
+
+	var top = (e.y / zoom - mouse[ 1 ] );
+	canvDiv.style.top = (-0.5 * canvDiv.offsetHeight * ( 1 - zoom ) + zoom * top) + "px";
 
 	e.preventDefault();
 };
@@ -366,9 +371,8 @@ function getMouse( e ) {
 			document.documentElement.scrollTop;
 	}
 
-	var zoom = canvDiv.style.zoom || 1.0;
-	posx = posx / zoom - canvDiv.offsetLeft;
-	posy = posy / zoom - canvDiv.offsetTop;
+	posx = posx / zoom - (canvDiv.offsetLeft + 0.5 * canvDiv.offsetWidth * ( 1 - zoom )) / zoom;
+	posy = posy / zoom - (canvDiv.offsetTop + 0.5 * canvDiv.offsetHeight * ( 1 - zoom )) / zoom;
 
 	return [ posx, posy ];
 	// posx and posy contain the mouse position relative to the document
