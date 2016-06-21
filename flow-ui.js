@@ -104,10 +104,7 @@ document.onmousedown = function mouseDown( e ) {
 				canvDiv.appendChild( selectBox );
 				selectBox.className = "selectBox";
 			}
-			var zoom = canvDiv.style.zoom || 1.0;
-			var left = mouse[ 0 ] / zoom - parseFloat( canvDiv.style.left || 0 ) ;
-			var top = mouse[ 1 ] / zoom - parseFloat( canvDiv.style.top || 0 ) ;
-			selectStart = [ left, top ];
+			selectStart = mouse;
 			doSelectBox();
 		} else if ( e.target.type != "textarea" && e.target.type != "input") {
 			document.activeElement.blur();
@@ -174,13 +171,10 @@ document.onmousemove = function mouseMove( e ) {
 			wiring[ 2 ].redraw();
 		}
 		if ( window.selectStart ) {
-			var zoom = canvDiv.style.zoom || 1.0;
-			var left = newMouse[ 0 ] / zoom - parseFloat( canvDiv.style.left || 0 ) ;
-			var top = newMouse[ 1 ] / zoom - parseFloat( canvDiv.style.top || 0 );
-			selectBox.style.width = Math.abs( left - selectStart[ 0 ] ) + "px";
-			selectBox.style.height = Math.abs( top - selectStart[ 1 ] ) + "px";
-			selectBox.style.left = Math.min( left, selectStart[ 0 ] ) + "px";
-			selectBox.style.top = Math.min( top, selectStart[ 1 ] ) + "px";
+			selectBox.style.width = Math.abs( newMouse[ 0 ] - selectStart[ 0 ] ) + "px";
+			selectBox.style.height = Math.abs( newMouse[ 1 ] - selectStart[ 1 ] ) + "px";
+			selectBox.style.left = Math.min( newMouse[ 0 ], selectStart[ 0 ] ) + "px";
+			selectBox.style.top = Math.min( newMouse[ 1 ], selectStart[ 1 ] ) + "px";
 			selectBox.style.visibility = "visible";
 			doSelectBox();
 		}
@@ -200,10 +194,9 @@ document.onblur = function() {
 };
 
 document.onmousewheel = function mousewheel( e ) {
-	var zoom = canvDiv.style.zoom || 1.0;
+	mouse = getMouse( e );
 
-	var left = e.x / zoom - parseFloat( canvDiv.style.left || 0 );
-	var top = e.y / zoom - parseFloat( canvDiv.style.top || 0 );
+	var zoom = canvDiv.style.zoom || 1.0;
 
 	var delta = (e.wheelDeltaY != null ? e.wheelDeltaY : e.detail * -60);
 
@@ -215,22 +208,18 @@ document.onmousewheel = function mousewheel( e ) {
 	zoom = Math.min( Math.max( zoom, 0.2 ), 1.0 );
 
 	canvDiv.style.zoom = zoom;
-	canvDiv.style.left = (e.x / zoom - left ) + "px";
-	canvDiv.style.top = (e.y / zoom - top ) + "px";
+	canvDiv.style.left = (e.x / zoom - mouse[ 0 ] ) + "px";
+	canvDiv.style.top = (e.y / zoom - mouse[ 1 ] ) + "px";
 
 	e.preventDefault();
 };
 
 
 function doSelectBox() {
-	var zoom = canvDiv.style.zoom || 1.0;
-	var left = mouse[ 0 ] / zoom - parseFloat( canvDiv.style.left || 0 ) ;
-	var top = mouse[ 1 ] / zoom - parseFloat( canvDiv.style.top || 0 );
-
-	var xMin = Math.min( left, selectStart[ 0 ] );
-	var xMax = Math.max( left, selectStart[ 0 ] );
-	var yMin = Math.min( top, selectStart[ 1 ] );
-	var yMax = Math.max( top, selectStart[ 1 ] );
+	var xMin = Math.min( mouse[ 0 ], selectStart[ 0 ] );
+	var xMax = Math.max( mouse[ 0 ], selectStart[ 0 ] );
+	var yMin = Math.min( mouse[ 1 ], selectStart[ 1 ] );
+	var yMax = Math.max( mouse[ 1 ], selectStart[ 1 ] );
 
 	// selected=[];
 
@@ -378,6 +367,11 @@ function getMouse( e ) {
 		posy = e.clientY + document.body.scrollTop +
 			document.documentElement.scrollTop;
 	}
+
+	var zoom = canvDiv.style.zoom || 1.0;
+	posx = posx / zoom - canvDiv.offsetLeft;
+	posy = posy / zoom - canvDiv.offsetTop;
+
 	return [ posx, posy ];
 	// posx and posy contain the mouse position relative to the document
 	// Do something with this information
