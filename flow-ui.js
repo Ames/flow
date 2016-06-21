@@ -99,7 +99,8 @@ document.onmousedown = function mouseDown( e ) {
 	mouse = getMouse( e );
 
 	if ( e.which == 1 ) { // left button
-		if ( e.target.id == "container" || e.target.nodeName == "HTML" ) { // probably won't work in ff
+		// if ( e.target.id == "container" || e.target.nodeName == "HTML" ) { // probably won't work in ff
+		if ( e.target.id != "uiPanel" ) {
 			if ( !selectBox ) {
 				selectBox = document.createElement("div" );
 				canvDiv.appendChild( selectBox );
