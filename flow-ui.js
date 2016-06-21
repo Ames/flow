@@ -116,42 +116,6 @@ document.onmousedown = function mouseDown( e ) {
 	e.stopPropagation();
 };
 
-function select( node ) {
-	selected.push( node );
-	node.widget.redraw();
-}
-
-function deselect( node ) {
-	if ( node ) {
-		selected.splice( selected.indexOf( node ), 1 );
-		node.widget.redraw();
-	} else {
-		for ( var ii = selected.length - 1; ii >= 0; ii-- ) {
-			deselect( selected[ ii ] );
-		}
-	}
-}
-
-document.onmouseup = function mouseUp( e ) {
-	mouse = getMouse( e );
-
-	if ( e.which == 1 ) { // left button
-		dragging = null;
-		if ( wiring ) {
-			wiring[ 2 ].remove();
-			wiring = null;
-		}
-		if ( selectStart ) {
-			doSelectBox();
-			selectStart = false;
-			selectBox.style.visibility = "hidden";
-		}
-	}
-
-	e.stopPropagation();
-	e.preventDefault();
-};
-
 document.onmousemove = function mouseMove( e ) {
 
 	newMouse = getMouse( e );
@@ -186,6 +150,26 @@ document.onmousemove = function mouseMove( e ) {
 	mouse = newMouse;
 };
 
+document.onmouseup = function mouseUp( e ) {
+	mouse = getMouse( e );
+
+	if ( e.which == 1 ) { // left button
+		dragging = null;
+		if ( wiring ) {
+			wiring[ 2 ].remove();
+			wiring = null;
+		}
+		if ( selectStart ) {
+			doSelectBox();
+			selectStart = false;
+			selectBox.style.visibility = "hidden";
+		}
+	}
+
+	e.stopPropagation();
+	e.preventDefault();
+};
+
 document.onblur = function() {
 	dragging = null;
 	if ( selectStart ) {
@@ -217,6 +201,21 @@ document.onmousewheel = function mousewheel( e ) {
 	e.preventDefault();
 };
 
+function select( node ) {
+	selected.push( node );
+	node.widget.redraw();
+}
+
+function deselect( node ) {
+	if ( node ) {
+		selected.splice( selected.indexOf( node ), 1 );
+		node.widget.redraw();
+	} else {
+		for ( var ii = selected.length - 1; ii >= 0; ii-- ) {
+			deselect( selected[ ii ] );
+		}
+	}
+}
 
 function doSelectBox() {
 	var xMin = Math.min( mouse[ 0 ], selectStart[ 0 ] );
@@ -240,6 +239,7 @@ function doSelectBox() {
 
 	// figure out who is selected and select them
 }
+
 function deleteNodes( nodes ) {
 	for ( var i = nodes.length - 1; i >= 0; i-- ) {
 		var n = nodes[ i ];
@@ -247,10 +247,12 @@ function deleteNodes( nodes ) {
 		n.remove();
 	}
 }
+
 function cutNodes( nodes ) {
 	copyNodes( nodes );
 	deleteNodes( nodes );
 }
+
 function copyNodes( nodes ) {
 	var xNodes = exportNodes( nodes );
 	for ( var i in xNodes.nodes ) {
