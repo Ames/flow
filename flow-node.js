@@ -4,7 +4,7 @@
 // f: function called on new input f(i,o)
 // step: function called every frame step(this)
 
-var Node = function Node( dArg, iArg ) {
+var FlowNode = function FlowNode( dArg, iArg ) {
 
 	this.inputs = {};
 	this.outputs = {};

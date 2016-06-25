@@ -531,10 +531,10 @@ function makeTypes() {
 	}
 }
 
-// basically make a NodeType that inherits from Node
+// basically make a NodeType that inherits from FlowNode
 function nodeType( dArg ) {
 	nodeTypes[ dArg.type ] = function NodeType( iArg ) {
-		this.inherit = Node;
+		this.inherit = FlowNode;
 		this.inherit( dArg, iArg );
 	};
 }
