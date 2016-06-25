@@ -16,6 +16,10 @@
     <!-- <script src='http://login.sccs.swarthmore.edu:8201/socket.io/socket.io.js'></script> -->
     
     <!--#include virtual="../googleAnalytics.html" -->
+
+	<script src="../webcomponents.js/webcomponents-lite.min.js"></script>
+	<link rel="import" href="hello-world.html">
+
 </head>
 
 <body onload='init()' onunload='unloading()'>
@@ -25,6 +29,7 @@
         <div style='margin-top:8px' id='library'></div>
         <div><a href="javascript:saveLocal()">save</a></div>
         <div><a href="javascript:openLocal()">load</a></div>
+		<hello-world who="Unicorn"></hello-world>
     </div>
 </body>
 

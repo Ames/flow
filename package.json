@@ -10,9 +10,12 @@
 	},
 	"devDependencies": {
 		"eslint": "^2.11.1",
-		"jscs": "^3.0.4"
+		"jscs": "^3.0.4",
+		"Polymer": "^1.0.0",
+		"webcomponents.js": "^0.7.2"
 	},
 	"scripts": {
+		"start": "node server 8080",
 		"build": "",
 		"test": "npm run jscs && npm run eslint",
 		"eslint": "node_modules/eslint/bin/eslint.js --format=./eslint_reporter.js *.js",
