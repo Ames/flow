@@ -11,7 +11,7 @@
 	"devDependencies": {
 		"eslint": "^2.11.1",
 		"jscs": "^3.0.4",
-		"Polymer": "^1.0.0",
+		"Polymer": "^1.2.0",
 		"webcomponents.js": "^0.7.2"
 	},
 	"scripts": {
