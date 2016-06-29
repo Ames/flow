@@ -1,6 +1,14 @@
 <html>
 
 <head>
+	<!-- Imports polyfill -->
+    <script src="../webcomponents.js/webcomponents-lite.min.js"></script>
+	<!-- Imports polymer -->
+	<link rel="import" href="../polymer/polymer.html">
+
+	<!-- Imports custom element -->
+    <link rel="import" href="hello-world.html">
+
     <!--<script type="text/javascript" src="flow-min.js"></script>-->
 
     <link rel="stylesheet" href="flow.css" media="screen" type="text/css" />
@@ -17,19 +25,18 @@
     
     <!--#include virtual="../googleAnalytics.html" -->
 
-	<script src="../webcomponents.js/webcomponents-lite.min.js"></script>
-	<link rel="import" href="hello-world.html">
-
 </head>
 
 <body onload='init()' onunload='unloading()'>
+    <!-- Runs custom element -->
+    <hello-world who="Unicorn"></hello-world>
+
     <div id='container'></div>
     <div id='uiPanel' class='bezel'>
         <div><a href="javascript:togglePlay()"><span id='playPause'>pause</span></a></div>
         <div style='margin-top:8px' id='library'></div>
         <div><a href="javascript:saveLocal()">save</a></div>
         <div><a href="javascript:openLocal()">load</a></div>
-		<hello-world who="Unicorn"></hello-world>
     </div>
 </body>
 
