@@ -1,6 +1,6 @@
 # Flow Graph
 
-Polymer component to add the [Ames's Flow Graph](https://github.com/Ames/flow) editor.
+Polymer component for the [Ames's Flow Graph](https://github.com/Ames/flow) editor.
 
 Usage:
 
