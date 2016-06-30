@@ -7,19 +7,11 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		E4C9CE9B1D24774000EDF15F /* flow-graph.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "flow-graph.html"; sourceTree = "<group>"; };
-		E4DE5FA11D138281004F5810 /* flow-examples.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-examples.js"; sourceTree = "<group>"; };
-		E4DE5FA21D138281004F5810 /* flow-graph.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-graph.js"; sourceTree = "<group>"; };
-		E4DE5FA41D138281004F5810 /* flow-node.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-node.js"; sourceTree = "<group>"; };
-		E4DE5FA51D138281004F5810 /* flow-types.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-types.js"; sourceTree = "<group>"; };
-		E4DE5FA61D138281004F5810 /* flow-ui.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-ui.js"; sourceTree = "<group>"; };
-		E4DE5FA71D138281004F5810 /* flow-widget.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-widget.js"; sourceTree = "<group>"; };
-		E4DE5FA81D138281004F5810 /* flow-wire.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-wire.js"; sourceTree = "<group>"; };
-		E4DE5FA91D138281004F5810 /* flow-graph.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = "flow-graph.css"; sourceTree = "<group>"; };
+		E49A32281D25C4BD0046819B /* flow-graph */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "flow-graph"; sourceTree = "<group>"; };
 		E4DE5FAA1D138281004F5810 /* grid25l.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = grid25l.gif; sourceTree = "<group>"; };
 		E4DE5FAB1D138281004F5810 /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		E4DE5FAC1D138281004F5810 /* license.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
-		E4DE5FAD1D138281004F5810 /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		E4DE5FAD1D138281004F5810 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E4DE5FB21D13844B004F5810 /* package.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -27,20 +19,12 @@
 		E457C6831CEB9D6D00BFBE0D = {
 			isa = PBXGroup;
 			children = (
-				E4DE5FA11D138281004F5810 /* flow-examples.js */,
-				E4DE5FA21D138281004F5810 /* flow-graph.js */,
-				E4DE5FA41D138281004F5810 /* flow-node.js */,
-				E4DE5FA51D138281004F5810 /* flow-types.js */,
-				E4DE5FA61D138281004F5810 /* flow-ui.js */,
-				E4DE5FA71D138281004F5810 /* flow-widget.js */,
-				E4DE5FA81D138281004F5810 /* flow-wire.js */,
-				E4DE5FA91D138281004F5810 /* flow-graph.css */,
+				E49A32281D25C4BD0046819B /* flow-graph */,
 				E4DE5FAA1D138281004F5810 /* grid25l.gif */,
 				E4DE5FAB1D138281004F5810 /* index.html */,
 				E4DE5FAC1D138281004F5810 /* license.txt */,
-				E4DE5FAD1D138281004F5810 /* README.txt */,
+				E4DE5FAD1D138281004F5810 /* README.md */,
 				E4DE5FB21D13844B004F5810 /* package.json */,
-				E4C9CE9B1D24774000EDF15F /* flow-graph.html */,
 			);
 			sourceTree = "<group>";
 		};
