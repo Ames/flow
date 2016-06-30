@@ -1,4 +1,5 @@
 
+var flowGraph;
 var canvDiv;
 
 var nodes = [];
@@ -67,7 +68,8 @@ Polymer({
 	properties: {
 	},
 	ready: function(){
-		canvDiv = document.getElementById("container" );
+		flowGraph = this;
+		canvDiv = flowGraph.$.container;
 
 		window.addEventListener("unload", this.detached);
 

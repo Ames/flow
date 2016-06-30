@@ -21,13 +21,13 @@ function makeLibrary() {
 	}
 	newTxt += "</ul>";
 
-	Polymer.dom(document.getElementById( "library" )).innerHTML = newTxt;
+	Polymer.dom(flowGraph.$.library).innerHTML = newTxt;
 }
 
 function togglePlay() {
 	play = !play;
 
-	document.getElementById( "playPause" ).innerHTML = play ? "pause" : "play";
+	flowGraph.$.playPause.innerHTML = play ? "pause" : "play";
 }
 
 function saveLocal() {
