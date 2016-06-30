@@ -88,6 +88,8 @@ Polymer({
 	ready: function(){
 		canvDiv = document.getElementById("container" );
 
+		window.addEventListener("unload",  this.detached);
+
 		if ( document.io ) {
 			socket = io.connect( "http://login.sccs.swarthmore.edu:8201" );
 		}
@@ -149,5 +151,6 @@ Polymer({
 	},
 	detached: function unloading(){
 		localStorage.setItem("tmpScene", JSON.stringify( exportNodes( nodes ) ) );
+		window.removeEventListener("unload", this.detached);
 	}
 });
