@@ -41,9 +41,9 @@ var step = function step() {
 		for ( var ii in nodes ) {
 			nodes[ ii ].progress();
 		}
-
-		window.setTimeout( step, 1000 / sps );
 	}
+
+	window.setTimeout( step, 1000 / sps );
 };
 
 // misc utility funcs
@@ -102,10 +102,16 @@ Polymer({
 
 		// window.setInterval(draw,1000/fps);
 
-		// this is supposed to be better.
+		var fpsInterval = 1000 / fps;
+		var then = Date.now();
 		(function animloop() {
-			requestAnimFrame( animloop );
-			draw();
+			requestAnimationFrame( animloop );
+			now = Date.now();
+			elapsed = now - then;
+			if (elapsed > fpsInterval) {
+				then = now - (elapsed % fpsInterval);
+				draw();
+			}
 		})();
 
 

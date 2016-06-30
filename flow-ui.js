@@ -27,8 +27,6 @@ function makeLibrary() {
 function togglePlay() {
 	play = !play;
 
-	step();
-
 	document.getElementById( "playPause" ).innerHTML = play ? "pause" : "play";
 }
 
