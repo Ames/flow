@@ -73,7 +73,7 @@ function computeWireDistance( a, b ) {
 	// transition threshold
 	const th = 300;
 
-	var d = Math.dist( a[ 0 ], a[ 1 ], b[ 0 ], b[ 1 ] );
+	var d = distance( a[ 0 ], a[ 1 ], b[ 0 ], b[ 1 ] );
 	// var d = a[0] - b[0];
 
 	// fix distance

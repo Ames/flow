@@ -232,7 +232,7 @@ var Widget = function Widget( node ) {
 	var hoverPorts = function( pts, pt ) {
 		for ( var ii in pts ) {
 			var prt = pts[ ii ];
-			if ( Math.dist( prt.pt[ 0 ], prt.pt[ 1 ], pt[ 0 ], pt[ 1 ] ) <= portR + 2 ) {
+			if ( distance( prt.pt[ 0 ], prt.pt[ 1 ], pt[ 0 ], pt[ 1 ] ) <= portR + 2 ) {
 				return ii;
 			}
 		}
