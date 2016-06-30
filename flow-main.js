@@ -1,8 +1,6 @@
 
 var canvDiv;
 
-var flow;
-
 var nodes = [];
 
 var curTime = 0;

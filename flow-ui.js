@@ -20,7 +20,7 @@ function makeLibrary() {
 	}
 	newTxt += "</ul>";
 
-	document.getElementById( "library" ).innerHTML = newTxt;
+	Polymer.dom(document.getElementById( "library" )).innerHTML = newTxt;
 }
 
 function togglePlay() {
@@ -103,8 +103,8 @@ document.onmousedown = function mouseDown( e ) {
 		if ( e.target.id != "uiPanel" ) {
 			if ( !selectBox ) {
 				selectBox = document.createElement("div" );
-				canvDiv.appendChild( selectBox );
 				selectBox.className = "selectBox";
+				Polymer.dom(canvDiv).appendChild( selectBox );
 			}
 			selectStart = mouse;
 			doSelectBox();

@@ -2,7 +2,7 @@
 var Wire = function Wire( p1, p2, color ) {
 
 	var element = document.createElement( "canvas" );
-	canvDiv.appendChild( element );
+	Polymer.dom(canvDiv).appendChild( element );
 	var ctx;
 	element.style[ "pointer-events" ] = "none";
 	element.style.zIndex = "-1";

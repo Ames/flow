@@ -14,14 +14,14 @@ var Widget = function Widget( node ) {
 	var showXbox = false;
 
 	var div = document.createElement( "div" );
-	canvDiv.appendChild( div );
 	div.className = "node";
+	Polymer.dom(canvDiv).appendChild( div );
 
 	if ( showXbox ) {
 		var xbox = document.createElement("div" );
 		xbox.className = "xbox";
 		xbox.innerHTML = "x";
-		div.appendChild( xbox );
+		Polymer.dom(div).appendChild( xbox );
 
 		xbox.onmousedown = function() {
 			node.remove();
@@ -29,7 +29,7 @@ var Widget = function Widget( node ) {
 	}
 
 	var canvas = document.createElement("canvas" );
-	div.appendChild( canvas );
+	Polymer.dom(div).appendChild( canvas );
 	var ctx;
 	canvas.style[ "pointer-events" ] = "none";
 
@@ -43,7 +43,6 @@ var Widget = function Widget( node ) {
 	var hue = 200;
 
 	this.box = document.createElement("div" );
-	div.appendChild( this.box );
 
 	this.box.className = "nodeBox";
 	this.box.style.position = "absolute";
@@ -51,6 +50,8 @@ var Widget = function Widget( node ) {
 	// this.box.style.height='0px';
 	this.box.style.top = "20px";
 	this.box.style.left = "10px";
+
+	Polymer.dom(div).appendChild( this.box );
 
 // 	var inPorts={}; // locations of ports
 // 	var outPorts={};
@@ -67,14 +68,14 @@ var Widget = function Widget( node ) {
 		for ( var ii in node.inputs ) {
 			var newLabel = document.createElement( "div" );
 			newLabel.className = "iLabel";
-			div.appendChild( newLabel );
+			Polymer.dom(div).appendChild( newLabel );
 			newLabel.innerHTML = ii;
 			iLabels[ ii ] = newLabel;
 		}
 		for ( var ii in node.outputs ) {
 			var newLabel = document.createElement( "div" );
 			newLabel.className = "oLabel";
-			div.appendChild( newLabel );
+			Polymer.dom(div).appendChild( newLabel );
 			newLabel.innerHTML = ii;
 			oLabels[ ii ] = newLabel;
 		}
@@ -126,7 +127,7 @@ var Widget = function Widget( node ) {
 	var handleDown = function( e ) {
 
 		// bring to front
-		canvDiv.appendChild( div );
+		Polymer.dom(canvDiv).appendChild( div );
 
 		var pt = getMouse( e );
 
@@ -377,14 +378,14 @@ function EditBox( pt, cur, callback ) {
 	box.className = "editBox";
 
 	var input = document.createElement( "input" );
-	box.appendChild( input );
+	Polymer.dom(box).appendChild( input );
 	box.style.left = pt[ 0 ] + "px";
 	box.style.top = pt[ 1 ] + "px";
 	box.style.width = 50 + "px";
 
 	input.style.width = "100%";
 
-	canvDiv.appendChild( box );
+	Polymer.dom(canvDiv).appendChild( box );
 
 	ths = this;
 	input.value = cur;

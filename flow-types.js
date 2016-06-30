@@ -115,7 +115,7 @@ var types = [
 
 		_.canv = document.createElement( "canvas" );
 		_.ctx = _.canv.getContext("2d" );
-		box.appendChild( _.canv );
+		Polymer.dom(box).appendChild( _.canv );
 
 		box.style.resize = "both";
 		box.style.overflow = "hidden";
@@ -235,7 +235,7 @@ var types = [
 		inp.style.height = _.h + "px";
 		box.style[ "pointer-events" ] = "auto";
 
-		box.appendChild( inp );
+		Polymer.dom(box).appendChild( inp );
 
 		that.widget.resize();
 
@@ -296,7 +296,7 @@ var types = [
 // 		inp.max=1;
 // 		inp.step=.001;
 
-		that.widget.box.appendChild( inp );
+		Polymer.dom(that.widget.box).appendChild( inp );
 		// that.widget.box.style.top='5px';
 		that.widget.resize();
 		inp.value = that.vars.value;
@@ -349,7 +349,7 @@ var types = [
 	init:function( i, o, that ) {
 		var inp = document.createElement( "input" );
 		inp.type = "checkbox";
-		that.widget.box.appendChild( inp );
+		Polymer.dom(that.widget.box).appendChild( inp );
 		// that.widget.box.style.top='5px';
 		that.widget.resize();
 		inp.checked = that.vars.checked;
@@ -373,7 +373,7 @@ var types = [
 		var inp = document.createElement("input" );
 		inp.type = "button";
 		inp.value = "press";
-		that.widget.box.appendChild( inp );
+		Polymer.dom(that.widget.box).appendChild( inp );
 		// that.widget.box.style.top='5px';
 		that.widget.resize();
 		inp.onmousedown = function( e ) {
