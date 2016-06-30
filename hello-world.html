@@ -21,18 +21,3 @@
     <script src="flow-examples.js"></script>
     <script src="flow-main.js"></script>
 </dom-module>
-
-<!-- Registers custom element -->
-<script>
-Polymer({
-    is: 'hello-world',
-    properties: {
-        who: {
-            type: String,
-            value: 'World'
-        }
-    },
-	ready: init,
-	detached: unloading
-});
-</script>
