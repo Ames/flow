@@ -30,11 +30,11 @@ var FlowNode = function FlowNode( dArg, iArg ) {
 		o[ ii ] = iArg.o[ ii ];
 	}
 
-//  	var i=arg.i||{}; // inputs
-// 	var o=arg.o||{}; // outputs
+// var i=arg.i||{}; // inputs
+// var o=arg.o||{}; // outputs
 
-	var initF = dArg.init || null;  // called once on init
-	var stepF = dArg.step || null;  // called every step, regardless of inputs
+	var initF = dArg.init || null; // called once on init
+	var stepF = dArg.step || null; // called every step, regardless of inputs
 	var f = dArg.f || function() {}; // called on step when new data
 
 
@@ -100,7 +100,7 @@ var FlowNode = function FlowNode( dArg, iArg ) {
 			var val = this.inputs[ ii ].src.val;
 
 			if ( !isFinite( val ) ) {
-			  val = val.toString();
+				val = val.toString();
 			}
 
 			obj.i[ ii ] = val;

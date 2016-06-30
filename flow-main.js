@@ -66,28 +66,28 @@ objectSize = function( obj ) {
 // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
 // shim layer with setTimeout fallback
 window.requestAnimFrame = (function() {
-  return window.requestAnimationFrame ||
-    window.webkitRequestAnimationFrame ||
-    window.mozRequestAnimationFrame    ||
-    window.oRequestAnimationFrame      ||
-    window.msRequestAnimationFrame     ||
-    function( /* function */ callback, /* DOMElement */ element ) {
-      window.setTimeout( callback, 1000 / 60 );
-    };
+	return window.requestAnimationFrame ||
+		window.webkitRequestAnimationFrame ||
+		window.mozRequestAnimationFrame ||
+		window.oRequestAnimationFrame ||
+		window.msRequestAnimationFrame ||
+		function( /* function */ callback, /* DOMElement */ element ) {
+			window.setTimeout( callback, 1000 / 60 );
+		};
 })();
 
 Polymer({
-    is: 'hello-world',
-    properties: {
-        who: {
-            type: String,
-            value: 'World'
-        }
-    },
+	is: 'hello-world',
+	properties: {
+		who: {
+			type: String,
+			value: 'World'
+		}
+	},
 	ready: function(){
 		canvDiv = document.getElementById("container" );
 
-		window.addEventListener("unload",  this.detached);
+		window.addEventListener("unload", this.detached);
 
 		if ( document.io ) {
 			socket = io.connect( "http://login.sccs.swarthmore.edu:8201" );
@@ -104,26 +104,26 @@ Polymer({
 
 		// this is supposed to be better.
 		(function animloop() {
-		  requestAnimFrame( animloop );
-		  draw();
+			requestAnimFrame( animloop );
+			draw();
 		})();
 
 
 		var tmpScene = localStorage.getItem("tmpScene" );
 		if ( tmpScene ) {
-		   loadScene( JSON.parse( tmpScene ) );
+			loadScene( JSON.parse( tmpScene ) );
 		}
 
 		/*
 		logger=new nodeTypes.Logger({x:500,y:200});
 		summer=new nodeTypes.Summer({x:200,y:100});
-		mou=new nodeTypes.Mouse( {x:100,y:180});
-		tim=new nodeTypes.Time(  {x: 50,y:410});
-		sin1=new nodeTypes.Sine( {x: 50,y:300,i:{freq:.5}});
-		sin2=new nodeTypes.Sine( {x:200,y:300,i:{freq:4.05}});
-		dis=new nodeTypes.Scope( {x:500,y:350});
+		mou=new nodeTypes.Mouse({x:100,y:180});
+		tim=new nodeTypes.Time({x: 50,y:410});
+		sin1=new nodeTypes.Sine({x: 50,y:300,i:{freq:.5}});
+		sin2=new nodeTypes.Sine({x:200,y:300,i:{freq:4.05}});
+		dis=new nodeTypes.Scope({x:500,y:350});
 		cus=new nodeTypes.Custom({x:200,y:400});
-		t2=new nodeTypes.X2(	 {x:350,y:150});
+		t2=new nodeTypes.X2({x:350,y:150});
 
 
 		mkWire(sin1,'y',sin2,'amp',100);
@@ -137,7 +137,7 @@ Polymer({
 
 		mkWire(cus,'x',dis,'y2',0);
 		mkWire(cus,'y',dis,'y3',100);
-	   // mkWire(lfo,'y',dis,'y1',220);
+		// mkWire(lfo,'y',dis,'y1',220);
 
 		*/
 

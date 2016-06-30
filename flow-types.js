@@ -53,7 +53,7 @@ var types = [
 	i:{ x:0, factor:1 },
 	o:{ y:0 },
 	step:function( i, o ) {
-		 i.factor = parseFloat( i.factor );
+		i.factor = parseFloat( i.factor );
 		o.y = (o.y * i.factor + i.x) / (1 + i.factor);
 	}
 }, { type:"Time",
@@ -102,7 +102,7 @@ var types = [
 
 		// we would store w and h in that.vars,
 		// but there's this issue with webkit where user can't make it smaller.
-		//  we might have to make our own resizable boxes :(
+		// we might have to make our own resizable boxes :(
 
 		/*
 		_.wField=document.createElement('div');
@@ -138,8 +138,8 @@ var types = [
 				_.w = pw;
 				_.h = ph;
 
-				 _.canv.width = _.w;
-				 _.canv.height = _.h;
+				_.canv.width = _.w;
+				_.canv.height = _.h;
 			}
 		};
 
@@ -326,17 +326,17 @@ var types = [
 
 		// http://stackoverflow.com/questions/4378435/how-to-access-accelerometer-gyroscope-data-from-javascript
 		if ( window.DeviceOrientationEvent ) {
-			 window.addEventListener("deviceorientation", function() {
-				  that.tilt([ event.beta, event.gamma ]);
-			 }, true );
+			window.addEventListener("deviceorientation", function() {
+				that.tilt([ event.beta, event.gamma ]);
+			}, true );
 		} else if ( window.DeviceMotionEvent ) {
-			 window.addEventListener( "devicemotion", function() {
-				  that.tilt([ event.acceleration.x * 2, event.acceleration.y * 2 ]);
-			 }, true );
+			window.addEventListener( "devicemotion", function() {
+				that.tilt([ event.acceleration.x * 2, event.acceleration.y * 2 ]);
+			}, true );
 		} else {
-			 window.addEventListener("MozOrientation", function() {
-				  that.tilt([ orientation.x * 50, orientation.y * 50 ]);
-			 }, true );
+			window.addEventListener("MozOrientation", function() {
+				that.tilt([ orientation.x * 50, orientation.y * 50 ]);
+			}, true );
 		}
 
 	}

@@ -214,15 +214,15 @@ var Widget = function Widget( node ) {
 			var prt = node.inputs[ prtn ];
 			if ( !prt.src.node ) {
 				var eBox = new EditBox( prt.pt, node.inputs[ prtn ].src.val, function( v ) {
-				    try {
-				        var newVal = eval( v ); // yeah I know.
+					try {
+						var newVal = eval( v ); // yeah I know.
 						// if(!isNaN(newVal)){
 						node.inputs[ prtn ].src.val = newVal;
 						node.inputs[ prtn ].src.flag = -1;
-				        // }
-				    } catch ( err ) {
+						// }
+					} catch ( err ) {
 
-				    }
+					}
 					ths.upLabels();
 				});
 			}
@@ -282,7 +282,7 @@ var Widget = function Widget( node ) {
 		}
 
 		if ( !drawn ) {
-		   ths.redraw();
+			ths.redraw();
 		}
 
 		this.redrawWires();
@@ -294,17 +294,17 @@ var Widget = function Widget( node ) {
 
 		ctx.clearRect( 0, 0, this.w, this.h );
 
-		ctx.fillStyle   = "hsla(" + hue + ", 80%, 90%,.8)";
+		ctx.fillStyle = "hsla(" + hue + ", 80%, 90%,.8)";
 		ctx.strokeStyle = "hsl(" + hue + ", 70%, " + (sel ? 35 : 40) + "%)";
 
 		ctx.lineWidth = sel ? 4 : 2;
 		roundRect( ctx, 3, 3, this.w - 6, this.h - 6, 7, true, true );
 
-		// ctx.fillStyle   = 'hsl(' + hue + ', 80%, 95%)';
+		// ctx.fillStyle = 'hsl(' + hue + ', 80%, 95%)';
 		ctx.lineWidth = 2;
 
 		if ( this.title ) {
-			ctx.fillStyle   = "hsla(" + hue + ", 80%, 97%,.9)";
+			ctx.fillStyle = "hsla(" + hue + ", 80%, 97%,.9)";
 			// ctx.lineWidth = 2;
 			roundRect( ctx, 3, 3, this.w - 6, titleHeight, 7, true, false );
 
@@ -395,7 +395,7 @@ function EditBox( pt, cur, callback ) {
 	this.removed = false;
 
 	input.onchange = function() {
-	    if ( this.removed ) {
+		if ( this.removed ) {
 			return;
 		}
 
@@ -404,19 +404,19 @@ function EditBox( pt, cur, callback ) {
 	};
 
 	input.onkeydown = function( e ) {
-	   switch ( e.which ){
-	       case 27: // ESC
-		       ths.remove();
-	           break;
-	       case 13: // Enter
-	           input.onchange();
-	           break;
-	   }
-	   // console.log(e);
+		switch ( e.which ){
+			case 27: // ESC
+				ths.remove();
+				break;
+			case 13: // Enter
+				input.onchange();
+				break;
+		}
+		// console.log(e);
 	};
 
 	this.remove = function() {
-	    this.removed = true;
+		this.removed = true;
 		if ( canvDiv.contains( box ) ) {
 			// console.log(canvDiv.contains(box));
 			try {
@@ -428,7 +428,7 @@ function EditBox( pt, cur, callback ) {
 	};
 
 	input.onblur = function() {
-	   ths.remove();
+		ths.remove();
 	};
 }
 
@@ -454,27 +454,27 @@ function circle( ctx, x, y, r ) {
  * @param {Boolean} stroke Whether to stroke the rectangle. Defaults to true.
  */
 function roundRect( ctx, x, y, width, height, radius, fill, stroke ) {
-  if ( typeof stroke == "undefined" ) {
-	stroke = true;
-  }
-  if ( typeof radius === "undefined") {
-	radius = 5;
-  }
-  ctx.beginPath();
-  ctx.moveTo( x + radius, y );
-  ctx.lineTo( x + width - radius, y );
-  ctx.quadraticCurveTo( x + width, y, x + width, y + radius );
-  ctx.lineTo( x + width, y + height - radius );
-  ctx.quadraticCurveTo( x + width, y + height, x + width - radius, y + height );
-  ctx.lineTo( x + radius, y + height );
-  ctx.quadraticCurveTo( x, y + height, x, y + height - radius );
-  ctx.lineTo( x, y + radius );
-  ctx.quadraticCurveTo( x, y, x + radius, y );
-  ctx.closePath();
-  if ( stroke ) {
-	ctx.stroke();
-  }
-  if ( fill ) {
-	ctx.fill();
-  }
+	if ( typeof stroke == "undefined" ) {
+		stroke = true;
+	}
+	if ( typeof radius === "undefined") {
+		radius = 5;
+	}
+	ctx.beginPath();
+	ctx.moveTo( x + radius, y );
+	ctx.lineTo( x + width - radius, y );
+	ctx.quadraticCurveTo( x + width, y, x + width, y + radius );
+	ctx.lineTo( x + width, y + height - radius );
+	ctx.quadraticCurveTo( x + width, y + height, x + width - radius, y + height );
+	ctx.lineTo( x + radius, y + height );
+	ctx.quadraticCurveTo( x, y + height, x, y + height - radius );
+	ctx.lineTo( x, y + radius );
+	ctx.quadraticCurveTo( x, y, x + radius, y );
+	ctx.closePath();
+	if ( stroke ) {
+		ctx.stroke();
+	}
+	if ( fill ) {
+		ctx.fill();
+	}
 }

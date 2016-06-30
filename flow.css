@@ -2,7 +2,7 @@
 	position: absolute;
 }
 canvas, .editBox, .node, .node>div, .selectBox{
-	position:absolute;   
+	position:absolute;
 }
 #container{
 	-webkit-user-select: none;
@@ -50,8 +50,8 @@ canvas, .editBox, .node, .node>div, .selectBox{
 	user-select: none;	
 	
 	position:absolute; 
-	top:5px;  
-	left:5px;  
+	top:5px;
+	left:5px;
 }
 .bezel{
 	padding: 6px 6px;
