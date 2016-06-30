@@ -9,6 +9,7 @@ var sps = 120;
 // var t0=0;
 
 var dragging = false;
+var panning = false;
 var mouse = [ 0, 0 ];
 
 var wiring; // wire under consruction: [srcNode,srcPort,wire,pt]

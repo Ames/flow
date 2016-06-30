@@ -3,6 +3,7 @@ var selectStart;
 var selectBox;
 var selected = [];
 var zoom = 1.0;
+var panStart;
 
 function makeLibrary() {
 
@@ -113,13 +114,21 @@ document.onmousedown = function mouseDown( e ) {
 			}
 			document.activeElement.blur();
 		}
+	} else if ( e.which == 3 ) {
+		if ( e.target.className.split(" ")[0].toLowerCase() != "node" ) {
+			if ( e.target.type != "textarea" && e.target.type != "input") {
+				panStart = mouse;
+				document.body.style.cursor = "-webkit-grabbing";
+				panning = true;
+			}
+		}
 	}
 
 	e.stopPropagation();
 };
 
 document.onmousemove = function mouseMove( e ) {
-
+	// console.log(e);
 	newMouse = getMouse( e );
 
 	if ( e.which == 1 ) { // left button
@@ -145,6 +154,15 @@ document.onmousemove = function mouseMove( e ) {
 			selectBox.style.visibility = "visible";
 			doSelectBox();
 		}
+	} else if ( e.which == 3 ) {
+		if ( panning ) {
+			var dx = newMouse[ 0 ] - mouse[ 0 ];
+			var dy = newMouse[ 1 ] - mouse[ 1 ];
+			canvDiv.style.left = ( canvDiv.offsetLeft + dx * zoom ) + "px";
+			canvDiv.style.top = ( canvDiv.offsetTop + dy * zoom ) + "px";
+			newMouse[ 0 ] -= dx;
+			newMouse[ 1 ] -= dy;
+		}
 	}
 
 	e.preventDefault();
@@ -166,10 +184,15 @@ document.onmouseup = function mouseUp( e ) {
 			selectStart = false;
 			selectBox.style.visibility = "hidden";
 		}
+	} else if ( e.which == 3) {
+		panning = false;
+		panStart = false;
 	}
 
 	e.stopPropagation();
 	e.preventDefault();
+
+	document.body.style.cursor = "";
 };
 
 document.onblur = function() {
@@ -202,6 +225,10 @@ document.onmousewheel = function mousewheel( e ) {
 
 	e.preventDefault();
 };
+
+document.oncontextmenu = function contextmenu( e ) {
+	return false;
+}
 
 function select( node ) {
 	selected.push( node );
