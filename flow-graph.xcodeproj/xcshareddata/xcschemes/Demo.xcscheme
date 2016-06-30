@@ -17,7 +17,7 @@
                BlueprintIdentifier = "E457C6971CEB9E0E00BFBE0D"
                BuildableName = "Demo"
                BlueprintName = "Demo"
-               ReferencedContainer = "container:flow.xcodeproj">
+               ReferencedContainer = "container:flow-graph.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,7 +61,7 @@
             BlueprintIdentifier = "E457C6971CEB9E0E00BFBE0D"
             BuildableName = "Demo"
             BlueprintName = "Demo"
-            ReferencedContainer = "container:flow.xcodeproj">
+            ReferencedContainer = "container:flow-graph.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <CommandLineArguments>

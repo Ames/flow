@@ -18,7 +18,7 @@
 		"start": "node server 8080",
 		"build": "",
 		"test": "npm run jscs && npm run eslint",
-		"eslint": "node_modules/eslint/bin/eslint.js --format=./eslint_reporter.js *.js",
-		"jscs": "node_modules/jscs/bin/jscs --reporter=./jscs_reporter.js *.js"
+		"eslint": "node_modules/eslint/bin/eslint.js --format=./eslint_reporter.js flow-graph/*.js",
+		"jscs": "node_modules/jscs/bin/jscs --reporter=./jscs_reporter.js flow-graph/*.js"
 	}
 }
