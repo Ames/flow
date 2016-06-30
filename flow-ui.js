@@ -100,17 +100,18 @@ document.onmousedown = function mouseDown( e ) {
 
 	if ( e.which == 1 ) { // left button
 		// if ( e.target.id == "container" || e.target.nodeName == "HTML" ) { // probably won't work in ff
-		if ( e.target.id != "uiPanel" ) {
-			if ( !selectBox ) {
-				selectBox = document.createElement("div" );
-				selectBox.className = "selectBox";
-				Polymer.dom(canvDiv).appendChild( selectBox );
+		if ( e.target.className.split(" ")[0].toLowerCase() != "node" ) {
+			if ( e.target.type != "textarea" && e.target.type != "input") {
+				if ( !selectBox ) {
+					selectBox = document.createElement("div");
+					selectBox.className = "selectBox";
+					Polymer.dom(canvDiv).appendChild( selectBox );
+				}
+				selectStart = mouse;
+				doSelectBox();
+				e.preventDefault();
 			}
-			selectStart = mouse;
-			doSelectBox();
-		} else if ( e.target.type != "textarea" && e.target.type != "input") {
 			document.activeElement.blur();
-			e.preventDefault();
 		}
 	}
 
