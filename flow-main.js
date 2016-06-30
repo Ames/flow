@@ -4,8 +4,8 @@ var canvDiv;
 var nodes = [];
 
 var curTime = 0;
-var fps = 60;
-var sps = 120;
+var fps = 30;
+var sps = 60;
 // var t0=0;
 
 var dragging = false;
