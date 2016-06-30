@@ -77,12 +77,8 @@ window.requestAnimFrame = (function() {
 })();
 
 Polymer({
-	is: 'hello-world',
+	is: 'flow-graph',
 	properties: {
-		who: {
-			type: String,
-			value: 'World'
-		}
 	},
 	ready: function(){
 		canvDiv = document.getElementById("container" );
