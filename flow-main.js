@@ -42,9 +42,8 @@ var step = function step() {
 			nodes[ ii ].progress();
 		}
 
+		window.setTimeout( step, 1000 / sps );
 	}
-
-	window.setTimeout( step, 1000 / sps );
 };
 
 // misc utility funcs
