@@ -141,5 +141,12 @@ objectSize = function( obj ) {
 	detached: function unloading(){
 		localStorage.setItem("tmpScene", JSON.stringify( exportNodes( nodes ) ) );
 		window.removeEventListener("unload", this.detached);
+	},
+	setTransform: function ( s, r, n, t ){
+		this.style.transform = "matrix(" +
+			s + ", 0, 0, " +
+			r + ", " +
+			Math.round(n + 0.5 * this.offsetWidth * (s - 1)) + ", " +
+			Math.round(t + 0.5 * this.offsetHeight * (r - 1)) + ")";
 	}
 });
