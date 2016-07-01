@@ -17,8 +17,8 @@ canvas, .editBox, .node, .node>div, .selectBox{
 	top: 0px;
 	left: 0px;
 
-	min-width:100%;
-	min-height:100%;
+	width: 1024px;
+	height: 768px;
 }
 .xbox{
 	top:-16px;
@@ -52,6 +52,7 @@ canvas, .editBox, .node, .node>div, .selectBox{
 	position:absolute; 
 	top:5px;
 	left:5px;
+	width: 100px;
 }
 .bezel{
 	padding: 6px 6px;
