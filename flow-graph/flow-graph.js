@@ -63,7 +63,7 @@ objectSize = function( obj ) {
 	return size;
 };
 
-Polymer({
+( typeof Editor !== "undefined" ? Editor.polymerElement : Polymer )({
 	is: 'flow-graph',
 	properties: {
 	},
