@@ -7,15 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		E488D81A1D260DB900008B64 /* flow-examples.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-examples.js"; sourceTree = "<group>"; };
-		E488D81B1D260DB900008B64 /* flow-graph.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = "flow-graph.css"; sourceTree = "<group>"; };
-		E488D81C1D260DB900008B64 /* flow-graph.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "flow-graph.html"; sourceTree = "<group>"; };
-		E488D81D1D260DB900008B64 /* flow-graph.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-graph.js"; sourceTree = "<group>"; };
-		E488D81E1D260DB900008B64 /* flow-node.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-node.js"; sourceTree = "<group>"; };
-		E488D81F1D260DB900008B64 /* flow-types.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-types.js"; sourceTree = "<group>"; };
-		E488D8201D260DB900008B64 /* flow-ui.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-ui.js"; sourceTree = "<group>"; };
-		E488D8211D260DB900008B64 /* flow-widget.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-widget.js"; sourceTree = "<group>"; };
-		E488D8221D260DB900008B64 /* flow-wire.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "flow-wire.js"; sourceTree = "<group>"; };
+		E48DA74B1D26BD6D006B4F0B /* flow-graph */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "flow-graph"; sourceTree = "<group>"; };
 		E4DE5FAA1D138281004F5810 /* grid25l.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = grid25l.gif; sourceTree = "<group>"; };
 		E4DE5FAB1D138281004F5810 /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		E4DE5FAC1D138281004F5810 /* license.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
@@ -27,29 +19,13 @@
 		E457C6831CEB9D6D00BFBE0D = {
 			isa = PBXGroup;
 			children = (
-				E488D8191D260DAA00008B64 /* component */,
+				E48DA74B1D26BD6D006B4F0B /* flow-graph */,
 				E4DE5FAA1D138281004F5810 /* grid25l.gif */,
 				E4DE5FAB1D138281004F5810 /* index.html */,
 				E4DE5FAC1D138281004F5810 /* license.txt */,
 				E4DE5FAD1D138281004F5810 /* README.md */,
 				E4DE5FB21D13844B004F5810 /* package.json */,
 			);
-			sourceTree = "<group>";
-		};
-		E488D8191D260DAA00008B64 /* component */ = {
-			isa = PBXGroup;
-			children = (
-				E488D81A1D260DB900008B64 /* flow-examples.js */,
-				E488D81B1D260DB900008B64 /* flow-graph.css */,
-				E488D81C1D260DB900008B64 /* flow-graph.html */,
-				E488D81D1D260DB900008B64 /* flow-graph.js */,
-				E488D81E1D260DB900008B64 /* flow-node.js */,
-				E488D81F1D260DB900008B64 /* flow-types.js */,
-				E488D8201D260DB900008B64 /* flow-ui.js */,
-				E488D8211D260DB900008B64 /* flow-widget.js */,
-				E488D8221D260DB900008B64 /* flow-wire.js */,
-			);
-			name = component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
