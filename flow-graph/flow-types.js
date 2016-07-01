@@ -115,11 +115,12 @@ var types = [
 
 		_.canv = document.createElement( "canvas" );
 		_.ctx = _.canv.getContext("2d" );
-		Polymer.dom(box).appendChild( _.canv );
 
 		box.style.resize = "both";
 		box.style.overflow = "hidden";
 		_.canv.style[ "pointer-events" ] = "none";
+
+		Polymer.dom(box).appendChild( _.canv );
 
 		_.newDat = false;
 

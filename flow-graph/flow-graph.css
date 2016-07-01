@@ -60,6 +60,8 @@ canvas, .editBox, .node, .node>div, .selectBox{
 	
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
+
+	z-index: 1000;
 }
 ul{
 	list-style-type:none;

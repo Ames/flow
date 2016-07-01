@@ -2,10 +2,12 @@
 var Wire = function Wire( p1, p2, color ) {
 
 	var element = document.createElement( "canvas" );
-	Polymer.dom(canvDiv).appendChild( element );
-	var ctx;
 	element.style[ "pointer-events" ] = "none";
-	element.style.zIndex = "-1";
+	element.style.zIndex = "0";
+	
+	Polymer.dom(canvDiv).appendChild( element );
+
+	var ctx;
 
 	var thick = 3.3;
 

@@ -15,6 +15,7 @@ var Widget = function Widget( node ) {
 
 	var div = document.createElement( "div" );
 	div.className = "node";
+	div.style.zIndex = 1;
 	Polymer.dom(canvDiv).appendChild( div );
 
 	if ( showXbox ) {
@@ -29,9 +30,10 @@ var Widget = function Widget( node ) {
 	}
 
 	var canvas = document.createElement("canvas" );
-	Polymer.dom(div).appendChild( canvas );
-	var ctx;
 	canvas.style[ "pointer-events" ] = "none";
+	Polymer.dom(div).appendChild( canvas );
+
+	var ctx;
 
 	var portSpacing = 15;
 	var portMargin = 12;
@@ -378,7 +380,6 @@ function EditBox( pt, cur, callback ) {
 	box.className = "editBox";
 
 	var input = document.createElement( "input" );
-	Polymer.dom(box).appendChild( input );
 	box.style.left = pt[ 0 ] + "px";
 	box.style.top = pt[ 1 ] + "px";
 	box.style.width = 50 + "px";
@@ -386,6 +387,7 @@ function EditBox( pt, cur, callback ) {
 	input.style.width = "100%";
 
 	Polymer.dom(canvDiv).appendChild( box );
+	Polymer.dom(box).appendChild( input );
 
 	ths = this;
 	input.value = cur;
