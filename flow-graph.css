@@ -1,4 +1,4 @@
-::host {
+:host {
 	position: absolute;
 }
 canvas, .editBox, .node, .node>div, .selectBox{
