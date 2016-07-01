@@ -14,7 +14,7 @@ Usage:
 	<link rel="import" href="../polymer/polymer.html">
 
 	<!-- Imports custom element -->
-	<link rel="import" href="flow-graph.html">
+	<link rel="import" href="flow-graph/flow-graph.html">
   </head>
 <body>
   <!-- Runs custom element -->
