@@ -1,31 +1,22 @@
 <html>
-
-<head>
-    <!--<script type="text/javascript" src="flow-min.js"></script>-->
-
-    <link rel="stylesheet" href="flow.css" media="screen" type="text/css" />
-
-    <script type="text/javascript" src="flow-ui.js"></script>
-    <script type="text/javascript" src="flow-types.js"></script>
-    <script type="text/javascript" src="flow-widget.js"></script>
-    <script type="text/javascript" src="flow-wire.js"></script>
-    <script type="text/javascript" src="flow-node.js"></script>
-    <script type="text/javascript" src="flow-examples.js"></script>
-    <script type="text/javascript" src="flow-main.js"></script>
-
-    <!-- <script src='http://login.sccs.swarthmore.edu:8201/socket.io/socket.io.js'></script> -->
-    
-    <!--#include virtual="../googleAnalytics.html" -->
-</head>
-
-<body onload='init()' onunload='unloading()'>
-    <div id='container'></div>
-    <div id='uiPanel' class='bezel'>
-        <div><a href="javascript:togglePlay()"><span id='playPause'>pause</span></a></div>
-        <div style='margin-top:8px' id='library'></div>
-        <div><a href="javascript:saveLocal()">save</a></div>
-        <div><a href="javascript:openLocal()">load</a></div>
-    </div>
+	<head>
+		<!-- Imports polyfill -->
+		<script src="../webcomponents.js/webcomponents-lite.min.js"></script>
+		<!-- Imports polymer -->
+		<link rel="import" href="../polymer/polymer.html">
+		<!-- Imports custom element -->
+		<link rel="import" href="flow-graph/flow-graph.html">
+		<!-- <script src='http://login.sccs.swarthmore.edu:8201/socket.io/socket.io.js'></script> -->
+		<!--#include virtual="../googleAnalytics.html" -->
+		<style>
+		body {
+			margin:0px;
+			background-image:url('grid25l.gif');
+		}
+		</style>
+	</head>
+<body>
+	<!-- Runs custom element -->
+	<flow-graph></flow-graph>
 </body>
-
 </html>

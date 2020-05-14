@@ -1,0 +1,23 @@
+<!-- Defines element markup -->
+<dom-module id="flow-graph">
+	<link rel="import" type="css" href="flow-graph.css">
+
+	<template>
+		<div id='container'></div>
+		<div id='uiPanel' class='bezel'>
+			<div><a href="javascript:togglePlay()"><span id='playPause'>play</span></a></div>
+			<div style='margin-top:8px' id='library'></div>
+			<div><a href="javascript:saveLocal()">save</a></div>
+			<div><a href="javascript:openLocal()">load</a></div>
+		</div>
+	</template>
+	
+	<!--<script src="flow-min.js"></script>-->
+	<script src="flow-ui.js"></script>
+	<script src="flow-types.js"></script>
+	<script src="flow-widget.js"></script>
+	<script src="flow-wire.js"></script>
+	<script src="flow-node.js"></script>
+	<script src="flow-examples.js"></script>
+	<script src="flow-graph.js"></script>
+</dom-module>
